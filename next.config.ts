@@ -11,6 +11,7 @@ const commitHash = execSync('git log --pretty=format:"%h" -n1')
 
 const nextConfig: NextConfig = {
   /* config options here */
+  output: "export",
   reactStrictMode: true,
   env: {
     // add the package.json version and git hash to the environment
