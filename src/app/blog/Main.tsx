@@ -1,6 +1,6 @@
 import Link from "@/components/Link";
 import Tag from "@/components/Tag";
-import NewsletterForm from "@/components/NewsletterForm";
+// import NewsletterForm from "@/components/NewsletterForm";
 
 function formatDate(date: string, locale: string = "en-US"): string {
   const options: Intl.DateTimeFormatOptions = {
@@ -16,7 +16,7 @@ const MAX_DISPLAY = 5;
 export default function Home({ posts }: any) {
   return (
     <div className="flex flex-col">
-      <div className="divide-y divide-gray-700 md:px-8 md:mx-64 md:w-full">
+      <div className="divide-y divide-gray-700 md:px-8 w-fit md:mx-auto">
         <div className="pb-8 md:space-y-5">
           <h1 className="text-3xl leading-9 font-extrabold tracking-tight sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 text-gray-100">
             Latest
@@ -89,7 +89,7 @@ export default function Home({ posts }: any) {
           </div>
         </div> */}
       </div>
-      {/* {posts.length > MAX_DISPLAY && (
+      {posts.length > MAX_DISPLAY && (
         <div className="flex justify-end text-base leading-6 font-medium mt-6">
           <Link
             href="/tags"
@@ -99,7 +99,7 @@ export default function Home({ posts }: any) {
             All Posts &rarr;
           </Link>
         </div>
-      )} */}
+      )}
     </div>
   );
 }

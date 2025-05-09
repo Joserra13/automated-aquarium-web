@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact',
+  title: 'Tags',
 };
 
 export default function ContactLayout({
