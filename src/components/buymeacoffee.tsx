@@ -8,7 +8,10 @@ export default function Buymeacoffee() {
     script.setAttribute("data-name", "BMC-Widget");
     script.src = "https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js";
     script.setAttribute("data-id", "automatedaquarium");
-    script.setAttribute("data-description", "Feed the fish and support the project!");
+    script.setAttribute(
+      "data-description",
+      "Feed the fish and support the project!"
+    );
     script.setAttribute(
       "data-message",
       "Feed the fish and support the project!"
@@ -21,9 +24,9 @@ export default function Buymeacoffee() {
     script.setAttribute("data-outline-color", "#000000");
     script.setAttribute("data-font-color", "#ffffff");
     script.setAttribute("data-coffee-color", "#FFDD00");
-	script.setAttribute("data-position", "Right");
-	script.setAttribute("data-x_margin", "18");
-	script.setAttribute("data-y_margin", "18");
+    script.setAttribute("data-position", "Right");
+    script.setAttribute("data-x_margin", "18");
+    script.setAttribute("data-y_margin", "18");
     script.async = true;
     document.head.appendChild(script);
     script.onload = function () {
