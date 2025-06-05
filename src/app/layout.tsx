@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/react"
 import type { Viewport } from 'next'
+import Buymeacoffee from "@/components/buymeacoffee";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,6 +43,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900 font-[family-name:var(--font-geist-sans)]`}
       >
         <Header />
+        <Buymeacoffee />
         {children}
         <Analytics />
         <Footer />
