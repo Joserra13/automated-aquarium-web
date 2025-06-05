@@ -27,7 +27,7 @@ export default function Buymeacoffee() {
     script.async = true;
     document.head.appendChild(script);
     script.onload = function () {
-      let evt = document.createEvent("Event");
+      const evt = document.createEvent("Event");
       evt.initEvent("DOMContentLoaded", false, false);
       window.dispatchEvent(evt);
     };
