@@ -13,7 +13,7 @@ export default function Contact() {
   }, []);
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-items-center p-4 sm:p-8 pb-12 sm:pb-20 gap-8 sm:gap-16 pt-16 sm:pt-32 px-32 sm:px-12 md:px-32">
+    <div className="flex flex-col sm:flex-row items-center justify-items-center p-4 sm:p-8 pb-12 sm:pb-20 gap-8 sm:gap-16 pt-16 sm:pt-32 px-4 sm:px-12 md:px-32">
       {/* Hero Section with Background Image */}
       <main className="w-full sm:w-1/2 flex items-center justify-center relative h-64 sm:h-[500px]">
         {/* Background Image */}
@@ -27,14 +27,16 @@ export default function Contact() {
           className="relative z-10 text-white text-center p-4 sm:p-8 rounded-lg"
           style={{ backgroundColor: "rgba(17, 24, 39, 0.75)" }}
         >
-          <h1 className="text-2xl sm:text-4xl font-semibold">Contact Us</h1>
+          <h1 className="text-xl sm:text-4xl font-semibold">Contact Us</h1>
         </div>
       </main>
 
       {/* Form Section */}
-      <main className="w-full sm:w-1/2 flex-1 flex-col gap-4 sm:gap-8 items-center sm:items-start">
-        <div className="flex flex-col gap-4 items-center sm:items-center">
-          <h2 className="text-lg sm:text-xl font-semibold">We'd love to hear from you!</h2>
+      <main className="w-full sm:w-1/2 flex flex-col gap-4 sm:gap-8 items-center sm:items-start">
+        <div className="flex flex-col gap-4 items-center sm:items-center w-full px-4">
+          <h2 className="text-lg sm:text-xl font-semibold text-center sm:text-left">
+            We'd love to hear from you!
+          </h2>
           {/* Show message based on state */}
           <h3
             className={`text-green-600 ${
