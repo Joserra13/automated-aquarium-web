@@ -25,9 +25,9 @@ export default function Home() {
       </div>
 
       {/* Main Content */}
-      <main className="flex flex-col sm:flex-row gap-2 sm:gap-8 w-full max-w-8xl font-[family-name:var(--font-geist-mono)]">
+      <main className="flex flex-col sm:flex-row gap-2 sm:gap-8 w-full max-w-8xl">
         {/* Card 1 */}
-        <div className="flex flex-col gap-4 items-center bg-transparent text-sm py-4 px-4 border border-cyan-700 rounded-lg w-full sm:w-1/3">
+        <div className="flex flex-col gap-4 items-center bg-transparent text-sm py-4 px-4 border border-cyan-700 rounded-lg w-full sm:w-1/3 font-[family-name:var(--font-geist-mono)]">
           <Image
             className="invert"
             src="/code.svg"
@@ -44,6 +44,18 @@ export default function Home() {
 
         {/* Card 2 */}
         <div className="flex flex-col gap-4 items-center bg-transparent text-sm py-4 px-4 border border-cyan-700 rounded-lg w-full sm:w-1/3">
+          <NewsletterForm
+            title="Subscribe to the Automated Aquarium Newsletter"
+            description="Get notified when new content is published. No spam, unsubscribe anytime."
+            buttonText="Subscribe"
+            errorMessage="An error occurred. Please try again."
+            successMessage="Thanks for subscribing!"
+            inputPlaceholder="Enter your email"
+          />
+        </div>
+
+        {/* Card 3 */}
+        <div className="flex flex-col gap-4 items-center bg-transparent text-sm py-4 px-4 border border-cyan-700 rounded-lg w-full sm:w-1/3 font-[family-name:var(--font-geist-mono)]">
           <Image
             className="invert"
             src="/in-work.svg"
@@ -57,38 +69,8 @@ export default function Home() {
             see updates as new features are added. Stay tuned for more exciting
             developments!
           </p>
-        </div>
-
-        {/* Card 3 */}
-        <div className="flex flex-col gap-4 items-center bg-transparent text-sm py-4 px-4 border border-cyan-700 rounded-lg w-full sm:w-1/3">
-          <Image
-            className="invert"
-            src="/share.svg"
-            alt="Share icon"
-            width={80}
-            height={80}
-            priority
-          />
-          <p className="text-center">
-            This website is thought to help anyone who wants to build a project
-            like this. Please, feel free to share your milestones to your
-            favourite social media and tag us.
-          </p>
-        </div>
+        </div> 
       </main>
-
-
-        <div className="max-w-xl mx-auto px-6 py-8 rounded-lg shadow-md border border-cyan-700">
-          <NewsletterForm
-            title="Subscribe to the Automated Aquarium Newsletter"
-            description="Get notified when new content is published. No spam, unsubscribe anytime."
-            buttonText="Subscribe"
-            errorMessage="An error occurred. Please try again."
-            successMessage="Thanks for subscribing!"
-            inputPlaceholder="Enter your email"
-          />
-        </div>
-
     </div>
   );
 }
