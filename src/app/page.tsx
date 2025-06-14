@@ -43,7 +43,7 @@ export default function Home() {
         </div>
 
         {/* Card 2 */}
-        <div className="flex flex-col gap-4 items-center bg-transparent text-sm py-4 px-4 border border-cyan-700 rounded-lg w-full sm:w-1/3">
+        <div className="flex flex-col gap-4 items-center justify-center bg-transparent text-sm py-4 px-4 border border-cyan-700 rounded-lg w-full sm:w-1/3">
           <NewsletterForm
             title="Subscribe to the Automated Aquarium Newsletter"
             description="Get notified when new content is published. No spam, unsubscribe anytime."
