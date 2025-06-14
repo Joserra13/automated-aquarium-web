@@ -76,7 +76,7 @@ export default function Home({ posts }: any) {
             );
           })}
         </ul>
-        <div className="w-full mt-12 pt-12 max-w-xl mx-auto">
+        <div className="w-full mt-12 pt-12 max-w-3xl mx-auto ">
           <div className="max-w-xl mx-auto px-6 py-8  rounded-lg shadow-md border border-cyan-700">
             <NewsletterForm
               title="Subscribe to the Automated Aquarium Newsletter"
