@@ -58,9 +58,9 @@ export default function AboutPage() {
               <h3 className="pt-4 pb-2 text-2xl leading-8 font-bold tracking-tight">
                 Joserra
               </h3>
-              <div className="text-gray-400">
-                SW Developer | MSc in IoT & Telecommunications Engineer
-              </div>
+                <div className="text-gray-400 text-center">
+                  SW Developer | MSc in IoT & Telecommunications Engineer
+                </div>
               <div className="flex space-x-3 pt-6">
                 <SocialIcons />
               </div>
