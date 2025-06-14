@@ -75,10 +75,10 @@ export default function Form({
         type="submit"
         id="submit"
         disabled={loading}
-        className={`rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-[#ededed] text-black  ${
+        className={`rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-cyan-500 text-black  ${
           loading
-            ? "bg-gray-400"
-            : "bg-foreground hover:bg-[#ccc]"
+            ? "bg-cyan-700"
+            : "bg-foreground hover:bg-cyan-700 hover:text-white"
         } text-background gap-2 text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5`}
       >
         {loading ? "Sending..." : "Send Message"}
