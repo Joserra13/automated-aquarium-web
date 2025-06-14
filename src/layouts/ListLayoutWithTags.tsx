@@ -95,7 +95,7 @@ export default function ListLayoutWithTags({
         
         <div className="mt-6 flex flex-col sm:flex-row gap-8">
           {/* Sidebar */}
-          <div className="hidden sm:block w-full sm:w-72 flex-shrink-0 sticky top-8 self-start">
+          <div className="sm:block w-half sm:w-72 flex-shrink-0 sticky top-8 self-start ">
             <div className="rounded-lg bg-gray-50 shadow-md dark:bg-gray-800 dark:shadow-gray-700/40 overflow-hidden">
               <div className="px-6 py-5">
                 {pathname.startsWith('/tags') ? (

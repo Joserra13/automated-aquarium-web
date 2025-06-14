@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 import pkg from './package.json';
-import { withContentlayer } from 'next-contentlayer'
+import { withContentlayer } from 'next-contentlayer2'
 
 // starts a command line process to get the git hash
 import { execSync } from 'child_process';
