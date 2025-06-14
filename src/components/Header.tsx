@@ -20,12 +20,7 @@ export default function Header() {
       <div className="container mx-auto px-4 flex justify-center items-center md:justify-between relative">
         {/* Website title with icon */}
         <Link href="/" className="flex items-center gap-2">
-          <Image
-            src="/main-icon.svg"
-            alt="Main Icon"
-            width={32}
-            height={32}
-          />
+          <Image src="/main-icon.svg" alt="Main Icon" width={32} height={32} />
           <h1 className="text-xl font-semibold">automatedAquarium</h1>
         </Link>
         {/* Navigation menu */}
@@ -84,36 +79,42 @@ export default function Header() {
         </div>
         <nav
           id="mobile-nav"
-          className={`md:hidden absolute top-full left-0 right-0 ${
+          className={`md:hidden absolute top-full left-0 right-0 m-8 ${
             isMobileNavVisible ? "" : "hidden"
           } bg-gray-800 rounded-lg p-4`}
         >
           <ul className="flex flex-col gap-y-4 mt-4">
-            <li>
-              <Link href="/" className="hover:text-gray-300" onClick={handleNavItemClick}>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className="hover:text-gray-300" onClick={handleNavItemClick}>
-                About
-              </Link>
-            </li>
-            {/* <li>
-              <Link href="/streaming" className="hover:text-gray-300" onClick={handleNavItemClick}>
-                Streaming
-              </Link>
-            </li> */}
-            <li>
-              <Link href="/blog" className="hover:text-gray-300" onClick={handleNavItemClick}>
-                Blog
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-gray-300" onClick={handleNavItemClick}>
-                Contact
-              </Link>
-            </li>
+            <Link
+              href="/"
+              className="hover:text-gray-300 hover:bg-slate-700 p-1"
+              onClick={handleNavItemClick}
+            >
+              <li>Home</li>
+            </Link>
+            <Link
+              href="/blog"
+              className="hover:text-gray-300 hover:bg-slate-700 p-1"
+              onClick={handleNavItemClick}
+            >
+              <li>Blog</li>
+            </Link>
+            <Link
+              href="/about"
+              className="hover:text-gray-300 hover:bg-slate-700 p-1"
+              onClick={handleNavItemClick}
+            >
+              <li>About</li>
+            </Link>
+            {/*<Link href="/streaming" className="hover:text-gray-300 hover:bg-slate-700 p-1" onClick={handleNavItemClick}>
+            <li>Streaming</li> 
+            </Link>*/}
+            <Link
+              href="/contact"
+              className="hover:text-gray-300 hover:bg-slate-700 p-1"
+              onClick={handleNavItemClick}
+            >
+              <li>Contact</li>
+            </Link>
           </ul>
         </nav>
       </div>
