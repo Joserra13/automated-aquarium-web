@@ -55,7 +55,7 @@ export default function NewsletterForm({
 
   return (
     <div className="flex flex-col items-center">
-      <h3 className="text-xl font-bold text-gray-100 mb-2">{title}</h3>
+      <h3 className="text-xl font-bold text-gray-100 mb-2 text-center">{title}</h3>
       <p className="text-gray-400 text-center mb-4">{description}</p>
 
       {status === "success" ? (
