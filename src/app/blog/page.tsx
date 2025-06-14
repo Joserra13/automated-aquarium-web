@@ -6,7 +6,7 @@ export default function Blog() {
     .filter((post) => post.draft !== true)
     .sort((a, b) => (a.date > b.date ? -1 : 1));
   return (
-    <div className="flex grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 gap-16 sm:pl-20 ml-16 mr-16">
+    <div className="grid-rows-[20px_1fr_20px] items-center justify-items-center p-4 pb-20 gap-16 sm:p-8 md:pl-20 mx-auto max-w-7xl w-full">
       <Main posts={posts} />
     </div>
   );
