@@ -5,10 +5,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { SocialIcons } from "./Social-Icons";
+import { usePathname } from "next/navigation";
 
 // Define the Header component
 export default function Header() {
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
+  const pathname = usePathname(); // <-- Add this line
 
   const handleNavItemClick = () => {
     setIsMobileNavVisible(false);
@@ -28,27 +30,40 @@ export default function Header() {
           <ul className="flex gap-x-6">
             {/* Navigation links */}
             <li>
-              <Link href="/" className="hover:text-gray-300">
+              <Link
+                href="/"
+                className={`hover:text-cyan-700 ${pathname === "/" ? "text-cyan-500" : "text-white"}`}
+              >
                 Home
               </Link>
             </li>
             {/* <li>
-              <Link href="/streaming" className="hover:text-gray-300">
-                Streaming
+              <Link href="/stream" 
+                className={`hover:text-cyan-700 ${pathname === "/stream" ? "text-cyan-500" : "text-white"}`}>
+                Stream
               </Link>
             </li> */}
             <li>
-              <Link href="/blog" className="hover:text-gray-300">
+              <Link
+                href="/blog"
+                className={`hover:text-cyan-700 ${pathname === "/blog" ? "text-cyan-500" : "text-white"}`}
+              >
                 Blog
               </Link>
             </li>
             <li>
-              <Link href="/about" className="hover:text-gray-300">
+              <Link
+                href="/about"
+                className={`hover:text-cyan-700 ${pathname === "/about" ? "text-cyan-500" : "text-white"}`}
+              >
                 About
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-gray-300">
+              <Link
+                href="/contact"
+                className={`hover:text-cyan-700 ${pathname === "/contact" ? "text-cyan-500" : "text-white"}`}
+              >
                 Contact
               </Link>
             </li>
@@ -86,31 +101,31 @@ export default function Header() {
           <ul className="flex flex-col gap-y-4 mt-4">
             <Link
               href="/"
-              className="hover:text-gray-300 hover:bg-slate-700 p-1"
+              className="hover:text-cyan-700 hover:bg-slate-700 p-1"
               onClick={handleNavItemClick}
             >
               <li>Home</li>
             </Link>
             <Link
               href="/blog"
-              className="hover:text-gray-300 hover:bg-slate-700 p-1"
+              className="hover:text-cyan-700 hover:bg-slate-700 p-1"
               onClick={handleNavItemClick}
             >
               <li>Blog</li>
             </Link>
             <Link
               href="/about"
-              className="hover:text-gray-300 hover:bg-slate-700 p-1"
+              className="hover:text-cyan-700 hover:bg-slate-700 p-1"
               onClick={handleNavItemClick}
             >
               <li>About</li>
             </Link>
-            {/*<Link href="/streaming" className="hover:text-gray-300 hover:bg-slate-700 p-1" onClick={handleNavItemClick}>
+            {/*<Link href="/streaming" className="hover:text-cyan-700 hover:bg-slate-700 p-1" onClick={handleNavItemClick}>
             <li>Streaming</li> 
             </Link>*/}
             <Link
               href="/contact"
-              className="hover:text-gray-300 hover:bg-slate-700 p-1"
+              className="hover:text-cyan-700 hover:bg-slate-700 p-1"
               onClick={handleNavItemClick}
             >
               <li>Contact</li>
