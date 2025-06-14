@@ -34,7 +34,7 @@ export default function Contact() {
       {/* Form Section */}
       <main className="w-full sm:w-1/2 flex flex-col gap-4 sm:gap-8 items-center sm:items-start">
         <div className="flex flex-col gap-4 items-center sm:items-center w-full px-4">
-          <h2 className="text-lg sm:text-xl font-semibold text-center sm:text-left">
+          <h2 className="text-lg sm:text-xl font-semibold text-center sm:text-left text-cyan-500">
             We'd love to hear from you!
           </h2>
           {/* Show message based on state */}
