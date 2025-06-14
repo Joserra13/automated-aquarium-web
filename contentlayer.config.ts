@@ -91,6 +91,6 @@ export const Authors = defineDocumentType(() => ({
 }))
 
 export default makeSource({
-  contentDirPath: "src/content",
+  contentDirPath: "content",
   documentTypes: [About, Blog, Authors],
 });
