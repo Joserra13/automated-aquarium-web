@@ -19,7 +19,7 @@ export default function AboutPage() {
     <div className="flex flex-col items-center justify-center p-4 sm:p-8 pb-12 sm:pb-20 gap-8 sm:gap-16 px-4 sm:px-12 md:px-32">
       {/* About the Project Section */}
       <div className="bg-[rgb(42,52,73)] w-full rounded-lg">
-        <h1 className="text-2xl sm:text-4xl font-bold text-center mt-8">
+        <h1 className="text-2xl sm:text-4xl font-bold text-center mt-8 text-cyan-600">
           About the project
         </h1>
         <div className="divide-y divide-gray-200">
@@ -42,7 +42,7 @@ export default function AboutPage() {
 
       {/* About Me Section */}
       <div className="bg-[rgb(42,52,73)] w-full rounded-lg">
-        <h1 className="text-2xl sm:text-4xl font-bold text-center mt-8">
+        <h1 className="text-2xl sm:text-4xl font-bold text-center mt-8 text-cyan-600">
           About Me
         </h1>
         <div className="divide-y divide-gray-200">
