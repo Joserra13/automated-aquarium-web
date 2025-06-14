@@ -16,8 +16,8 @@ const MAX_DISPLAY = 5;
 export default function Home({ posts }: any) {
   return (
     <div className="flex flex-col">
-      <div className="divide-y divide-gray-700 px-4 md:px-8 w-full max-w-3xl mx-auto">
-        <div className="pb-8 space-y-5 max-w-3xl mx-auto">
+      <div className="divide-y divide-cyan-700 px-4 md:px-8 w-full max-w-3xl mx-auto">
+        <div className="pb-8 md:space-y-5 max-w-3xl mx-auto">
           <h1 className="text-3xl leading-9 font-extrabold tracking-tight sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 text-gray-100">
             Latest
           </h1>
@@ -25,7 +25,7 @@ export default function Home({ posts }: any) {
             Stay updated with the latest updates about the Automated Aquarium.
           </p>
         </div>
-        <ul className="divide-y divide-gray-700 max-w-3xl mx-auto">
+        <ul className="divide-y divide-cyan-700 max-w-3xl mx-auto">
           {!posts.length && "No posts found."}
           {posts.slice(0, MAX_DISPLAY).map((post: any) => {
             const { slug, date, title, summary, tags } = post;
@@ -77,7 +77,7 @@ export default function Home({ posts }: any) {
           })}
         </ul>
         <div className="w-full mt-12 pt-12 max-w-xl mx-auto">
-          <div className="max-w-xl mx-auto px-6 py-8  rounded-lg shadow-md border border-gray-700">
+          <div className="max-w-xl mx-auto px-6 py-8  rounded-lg shadow-md border border-cyan-700">
             <NewsletterForm
               title="Subscribe to the Automated Aquarium Newsletter"
               description="Get notified when new content is published. No spam, unsubscribe anytime."
