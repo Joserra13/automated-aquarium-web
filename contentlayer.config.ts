@@ -28,11 +28,11 @@ const computedFields: ComputedFields = {
 /**
  * Count the occurrences of all tags across blog posts and write to json file
  */
-async function createTagCount(allBlogs) {
+async function createTagCount(allBlogs: any) {
   const tagCount: Record<string, number> = {}
-  allBlogs.forEach((file) => {
+  allBlogs.forEach((file: any) => {
     if (file.tags && file.draft !== true) {
-      file.tags.forEach((tag) => {
+      file.tags.forEach((tag: any) => {
         const formattedTag = slug(tag)
         if (formattedTag in tagCount) {
           tagCount[formattedTag] += 1
