@@ -10,7 +10,7 @@ export function SocialIcons() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FaLinkedin className="text-white hover:text-gray-300" />
+          <FaLinkedin className="text-white hover:text-cyan-500" />
         </a>
         {/* GitHub icon */}
         <a
@@ -18,7 +18,7 @@ export function SocialIcons() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FaGithub className="text-white hover:text-gray-300" />
+          <FaGithub className="text-white hover:text-cyan-500" />
         </a>
         {/* Add more social media icons as needed */}
       </div>

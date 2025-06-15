@@ -6,7 +6,7 @@ inputs:
   blog_directory:
     description: 'Path to the blog posts directory'
     required: true
-    default: 'src/content/blog'
+    default: 'content/blog'
 
 outputs:
   metadata:

@@ -12,9 +12,9 @@ This action:
 
 ## Inputs
 
-| Input          | Description              | Required | Default          |
-|----------------|--------------------------|----------|------------------|
-| blog_directory | Path to blog posts       | No       | src/content/blog |
+| Input          | Description              | Required | Default      |
+|----------------|--------------------------|----------|--------------|
+| blog_directory | Path to blog posts       | No       | content/blog |
 
 ## Outputs
 
@@ -38,7 +38,7 @@ jobs:
         id: extract
         uses: ./.github/actions/extract-blog-metadata
         with:
-          blog_directory: 'src/content/blog'
+          blog_directory: 'content/blog'
           
       - name: Use the metadata
         run: |

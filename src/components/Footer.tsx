@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center text-center mb-8 text-sm">
+    <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center text-center my-8 text-sm">
       <div>
         Open-source automated aquarium -- MIT Licensed -- ©{" "}
         {new Date().getFullYear()} José Ramón Hoz<br></br>

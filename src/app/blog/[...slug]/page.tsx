@@ -3,8 +3,8 @@ import {
   coreContent,
   allCoreContent,
 } from "pliny/utils/contentlayer.js";
-import { allBlogs, allAuthors } from "contentlayer/generated";
-import type { Authors, Blog } from "contentlayer/generated";
+import { allBlogs, allAuthors } from "contentlayer2/generated";
+import type { Authors, Blog } from "contentlayer2/generated";
 import PostLayout from "@/layouts/PostLayout";
 import { notFound } from "next/navigation";
 import MDXContentRenderer from "@/components/MDXContentRenderer"; // Import the new component
