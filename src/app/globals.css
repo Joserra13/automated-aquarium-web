@@ -22,3 +22,8 @@ body {
 .extra-space {
   margin-bottom: 1rem; /* Adjust the value as needed */
 }
+
+.divide-y > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-top-color: rgb(6 182 212 / var(--tw-divide-opacity)); /* cyan-500 */
+}

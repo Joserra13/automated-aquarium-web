@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { SocialIcons } from "@/components/Social-Icons";
-import { allAbouts, About } from "contentlayer/generated";
-import { getMDXComponent } from "next-contentlayer/hooks";
+import { allAbouts, About } from "contentlayer2/generated";
+import { getMDXComponent } from "next-contentlayer2/hooks";
 
 function AboutContent(about: About) {
   const Content = getMDXComponent(about.body.code);

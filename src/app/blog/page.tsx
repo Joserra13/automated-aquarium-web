@@ -1,4 +1,4 @@
-import { allBlogs } from "contentlayer/generated";
+import { allBlogs } from "contentlayer2/generated";
 import Main from "./Main";
 
 export default function Blog() {
