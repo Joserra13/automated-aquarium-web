@@ -1,10 +1,13 @@
-import { defineDocumentType, ComputedFields, makeSource } from "contentlayer/source-files";
+import { defineDocumentType, ComputedFields, makeSource } from "contentlayer2/source-files";
 import {
 //   remarkExtractFrontmatter,
 //   remarkCodeTitles,
 //   remarkImgToJsx,
   extractTocHeadings,
 } from 'pliny/mdx-plugins/index.js'
+import prettier from 'prettier'
+import { writeFileSync } from 'fs'
+import { slug } from 'github-slugger'
 
 const computedFields: ComputedFields = {
   slug: {
@@ -20,6 +23,27 @@ const computedFields: ComputedFields = {
     resolve: (doc) => doc._raw.sourceFilePath,
   },
   toc: { type: 'json', resolve: (doc) => extractTocHeadings(doc.body.raw) },
+}
+
+/**
+ * Count the occurrences of all tags across blog posts and write to json file
+ */
+async function createTagCount(allBlogs: any) {
+  const tagCount: Record<string, number> = {}
+  allBlogs.forEach((file: any) => {
+    if (file.tags && file.draft !== true) {
+      file.tags.forEach((tag: any) => {
+        const formattedTag = slug(tag)
+        if (formattedTag in tagCount) {
+          tagCount[formattedTag] += 1
+        } else {
+          tagCount[formattedTag] = 1
+        }
+      })
+    }
+  })
+  const formatted = await prettier.format(JSON.stringify(tagCount, null, 2), { parser: 'json' })
+  writeFileSync('./src/app/tag-data.json', formatted)
 }
 
 export const About = defineDocumentType(() => ({
@@ -93,4 +117,9 @@ export const Authors = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: "content",
   documentTypes: [About, Blog, Authors],
+  onSuccess: async (importData) => {
+    const { allBlogs } = await importData()
+    createTagCount(allBlogs)
+    // createSearchIndex(allBlogs)
+  },
 });
