@@ -88,7 +88,7 @@ export default function ListLayoutWithTags({
     <>
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-8 border-b border-gray-700 text-center">
-          <h1 className="text-3xl font-extrabold tracking-tight !text-cyan-500 sm:text-4xl md:text-5xl">
+          <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">
             Tag: {title}
           </h1>
         </div>
