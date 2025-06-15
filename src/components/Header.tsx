@@ -150,6 +150,8 @@ export default function Header() {
             >
               <li>Contact</li>
             </Link>
+
+            <SocialIcons />
           </ul>
         </nav>
       </div>
