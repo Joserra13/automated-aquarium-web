@@ -1,12 +1,18 @@
 name: Blog Post Notification
 
 on:
-  push:
-    branches:
-      # - main
-      - devBranch
-    paths:
-      - 'src/content/blog/**'
+  workflow_dispatch:
+    inputs:
+      blog_directory:
+        description: 'Path to the blog posts directory'
+        required: false
+        default: 'content/blog/**'
+  # push:
+  #   branches:
+  #     - main
+  #     # - devBranch
+  #   paths:
+  #     - 'content/blog/**'
 
 jobs:
   process-and-notify:
@@ -21,7 +27,7 @@ jobs:
         id: metadata
         uses: ./.github/actions/extract-blog-metadata
         with:
-          blog_directory: 'src/content/blog'
+          blog_directory: 'content/blog'
 
       # Add this debug step
       # - name: Debug metadata
