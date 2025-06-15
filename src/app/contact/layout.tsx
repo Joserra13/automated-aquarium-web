@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import '@/app/contact/style.css';
 
 export const metadata: Metadata = {
   title: 'Contact',
