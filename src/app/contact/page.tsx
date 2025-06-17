@@ -37,21 +37,6 @@ export default function Contact() {
           <h2 className="text-lg sm:text-xl font-semibold text-center sm:text-left text-cyan-500">
             We'd love to hear from you!
           </h2>
-          {/* Show message based on state */}
-          <h3
-            className={`text-green-600 ${
-              messageStatus === "success" ? "block" : "hidden"
-            }`}
-          >
-            Message sent!
-          </h3>
-          <h3
-            className={`text-red-600 ${
-              messageStatus === "error" ? "block" : "hidden"
-            }`}
-          >
-            Error sending message!
-          </h3>
           <Form onMessageStatusChange={handleMessageStatusChange} />
         </div>
       </main>
