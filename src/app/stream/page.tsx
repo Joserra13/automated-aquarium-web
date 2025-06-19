@@ -1,23 +1,37 @@
-export default function Stream() {
+import DataDisplay from "@/components/DataDisplay";
+
+export default async function Stream() {
+  const query = await fetch("https://automated-aquarium-backend.vercel.app/fishFeeder", {
+    headers: new Headers({
+      "api-key": `${process.env.BACKEND_API_KEY}`,
+    }),
+  });
+  const fishFeeder = await query.json();
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-center p-4 sm:p-8 pb-12 sm:pb-20 gap-8 sm:gap-16 sm:pt-32 px-4 sm:px-12 md:px-32">
+    <div className="flex flex-col sm:flex-row items-center justify-center p-4 sm:p-8 pb-12 sm:pb-20 gap-8 sm:gap-16 sm:pt-25 px-4 sm:px-12 md:px-16">
       <div className="w-full max-w-3xl flex flex-col items-center">
         {/* Data section */}
         <div className="w-full bg-white dark:bg-gray-900 rounded-xl shadow-md mb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div>
             <h2 className="text-xl font-semibold">Aquarium Status</h2>
-            <p className="text-gray-500 dark:text-gray-400">Live stream and sensor data</p>
+            <p className="text-gray-500 dark:text-gray-400">
+              Live stream and sensor data
+            </p>
           </div>
           <div className="flex gap-6">
-            <div className="flex flex-col items-center">
-              <span className="text-lg font-bold">24°C</span>
-              <span className="text-xs text-gray-500 dark:text-gray-400">Temperature</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <span className="text-lg font-bold">7.2</span>
-              <span className="text-xs text-gray-500 dark:text-gray-400">pH Level</span>
-            </div>
+            <DataDisplay
+              sensor={{
+                key: "Temperature (ºC)",
+                value: fishFeeder.waterTemperature.toFixed(2),
+              }}
+            />
+            <DataDisplay
+              sensor={{ key: "Times Fed", value: fishFeeder.count }}
+            />
+            <DataDisplay
+              sensor={{ key: "feednow", value: fishFeeder.feednow.toString() }}
+            />
           </div>
         </div>
         {/* Big picture section */}
