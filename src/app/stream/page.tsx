@@ -2,11 +2,14 @@ import DataDisplay from "@/components/DataDisplay";
 
 export default async function Stream() {
   const query = await fetch("https://automated-aquarium-backend.vercel.app/fishFeeder", {
+  // const query = await fetch("http://localhost:3000/fishFeeder", {
     headers: new Headers({
       "api-key": `${process.env.BACKEND_API_KEY}`,
     }),
   });
-  const fishFeeder = await query.json() || {};
+  const fishFeeder = await query.json();
+
+  console.log("FishFeeder Data:", fishFeeder);
 
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center p-4 sm:p-8 pb-12 sm:pb-20 gap-8 sm:gap-16 sm:pt-25 px-4 sm:px-12 md:px-16">
