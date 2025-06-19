@@ -6,7 +6,7 @@ export default async function Stream() {
       "api-key": `${process.env.BACKEND_API_KEY}`,
     }),
   });
-  const fishFeeder = await query.json();
+  const fishFeeder = await query.json() || {};
 
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center p-4 sm:p-8 pb-12 sm:pb-20 gap-8 sm:gap-16 sm:pt-25 px-4 sm:px-12 md:px-16">
@@ -23,14 +23,22 @@ export default async function Stream() {
             <DataDisplay
               sensor={{
                 key: "Temperature (ºC)",
-                value: fishFeeder.waterTemperature.toFixed(2),
+                value: fishFeeder.waterTemperature
+                  ? fishFeeder.waterTemperature.toFixed(2)
+                  : "N/A",
               }}
             />
             <DataDisplay
-              sensor={{ key: "Times Fed", value: fishFeeder.count }}
+              sensor={{ key: "Times Fed", value: fishFeeder.count ?? "N/A" }}
             />
             <DataDisplay
-              sensor={{ key: "feednow", value: fishFeeder.feednow.toString() }}
+              sensor={{
+                key: "feednow",
+                value:
+                  fishFeeder.feednow !== undefined
+                    ? fishFeeder.feednow.toString()
+                    : "N/A",
+              }}
             />
           </div>
         </div>
