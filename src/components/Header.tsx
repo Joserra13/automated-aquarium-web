@@ -39,12 +39,14 @@ export default function Header() {
                 Home
               </Link>
             </li>
-            {/* <li>
-              <Link href="/stream" 
-                className={`hover:text-cyan-700 ${pathname === "/stream" ? "text-cyan-500" : "text-white"}`}>
+            <li>
+              <Link
+                href="/stream"
+                className={`hover:text-cyan-700 ${pathname === "/stream" ? "text-cyan-500" : "text-white"}`}
+              >
                 Stream
               </Link>
-            </li> */}
+            </li>
             <li>
               <Link
                 href="/blog"
@@ -117,6 +119,15 @@ export default function Header() {
               <li>Home</li>
             </Link>
             <Link
+              href="/stream"
+              className={`hover:bg-cyan-800 ${
+                pathname === "/stream" ? "text-cyan-500" : "text-white"
+              } p-1`}
+              onClick={handleNavItemClick}
+            >
+              <li>Stream</li>
+            </Link>
+            <Link
               href="/blog"
               className={`hover:bg-cyan-800 ${
                 pathname.startsWith("/blog") ? "text-cyan-500" : "text-white"
@@ -134,13 +145,6 @@ export default function Header() {
             >
               <li>About</li>
             </Link>
-            {/*<Link href="/stream" 
-              className={`hover:bg-cyan-800 ${
-                  pathname === "/stream" ? "text-cyan-500" : "text-white"
-                } p-1`}
-                  onClick={handleNavItemClick}>
-            <li>Stream</li> 
-            </Link>*/}
             <Link
               href="/contact"
               className={`hover:bg-cyan-800 ${
