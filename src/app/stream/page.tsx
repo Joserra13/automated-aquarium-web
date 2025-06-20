@@ -7,6 +7,7 @@ export default async function Stream() {
     headers: new Headers({
       "api-key": `${process.env.BACKEND_API_KEY}`,
     }),
+    next: { revalidate: 3 }, // Revalidate every 60 seconds
   });
   const fishFeeder = await query.json();
 
