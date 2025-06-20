@@ -1,19 +1,41 @@
 "use client";
+import useSWR from "swr";
+
+const fetcher = (url: string) =>
+  fetch(url, {
+    headers: new Headers({
+      "api-key": `${process.env.BACKEND_API_KEY}`,
+    }),
+    next: { revalidate: 3 }, // Revalidate every 3 seconds
+  }).then((res) => res.json());
 
 type Sensor = {
   key: string;
-  value: string | number;
+  tag: string;
 };
 
-export default function DataDisplay({sensor}: { sensor: Sensor }) {
+export default function DataDisplay({ sensor }: { sensor: Sensor }) {
+  const { data } = useSWR(
+    "https://automated-aquarium-backend.vercel.app/fishFeeder",
+    fetcher
+  );
 
-  console.log("sensor.key:", sensor.key);
-  console.log("sensor.value:", sensor.value);
+  console.log("DataDisplay Data:", data);
 
   return (
     <div className="flex flex-col items-center">
-      <span className="text-lg font-bold">{sensor.value}</span>
-      <span className="text-xs text-gray-500 dark:text-gray-400">{sensor.key}</span>
+      <span className="text-lg font-bold">
+        {sensor.key === "waterTemperature"
+          ? data && data[sensor.key] !== undefined
+            ? data[sensor.key].toFixed(2)
+            : "N/A"
+          : data && data[sensor.key] !== undefined
+            ? data[sensor.key].toString()
+            : "N/A"}
+      </span>
+      <span className="text-xs text-gray-500 dark:text-gray-400">
+        {sensor.tag}
+      </span>
     </div>
   );
 }
