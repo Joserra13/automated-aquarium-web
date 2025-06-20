@@ -1,17 +1,36 @@
 import DataDisplay from "@/components/DataDisplay";
-import { Suspense } from "react";
+import { SWRConfig } from "swr";
 
 export default async function Stream() {
-  const query = await fetch("https://automated-aquarium-backend.vercel.app/fishFeeder", {
-  // const query = await fetch("http://localhost:3000/fishFeeder", {
-    headers: new Headers({
-      "api-key": `${process.env.BACKEND_API_KEY}`,
-    }),
-    next: { revalidate: 3 }, // Revalidate every 60 seconds
-  });
-  const fishFeeder = await query.json();
+  const initialData = await fetch(
+    "https://automated-aquarium-backend.vercel.app/fishFeeder",
+    {
+      // const query = await fetch("http://localhost:3000/fishFeeder", {
+      headers: new Headers({
+        "api-key": `${process.env.BACKEND_API_KEY}`,
+      }),
+      cache: "no-store",
+    }
+  )
+    .then((res) => res.json())
+    .catch((error) => {
+      console.error("Error fetching initial data:", error);
+      return null;
+    });
 
-  console.log("FishFeeder Data:", fishFeeder);
+  const fallback = {
+    "https://automated-aquarium-backend.vercel.app/fishFeeder": initialData || {
+      schedule0Enabled: true,
+      feednow: false,
+      schedule2Enabled: false,
+      schedule2: "00:00",
+      schedule1Enabled: false,
+      schedule0: "00:00",
+      schedule1: "00:00",
+      count: 31,
+      waterTemperature: 0.62842,
+    },
+  };
 
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center p-4 sm:p-8 pb-12 sm:pb-20 gap-8 sm:gap-16 sm:pt-25 px-4 sm:px-12 md:px-16">
@@ -25,28 +44,21 @@ export default async function Stream() {
             </p>
           </div>
           <div className="flex gap-6">
-            <Suspense>
+            <SWRConfig value={{ fallback }}>
               <DataDisplay
                 sensor={{
-                  key: "Temperature (ºC)",
-                  value: fishFeeder.waterTemperature
-                    ? fishFeeder.waterTemperature.toFixed(2)
-                    : "N/A",
+                  tag: "Temperature (ºC)",
+                  key: "waterTemperature",
                 }}
               />
-              <DataDisplay
-                sensor={{ key: "Times Fed", value: fishFeeder.count ?? "N/A" }}
-              />
+              <DataDisplay sensor={{ tag: "Times Fed", key: "count" }} />
               <DataDisplay
                 sensor={{
+                  tag: "feednow",
                   key: "feednow",
-                  value:
-                    fishFeeder.feednow !== undefined
-                      ? fishFeeder.feednow.toString()
-                      : "N/A",
                 }}
               />
-            </Suspense>
+            </SWRConfig>
           </div>
         </div>
         {/* Big picture section */}
