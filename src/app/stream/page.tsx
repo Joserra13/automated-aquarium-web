@@ -1,4 +1,5 @@
 import DataDisplay from "@/components/DataDisplay";
+import { Suspense } from "react";
 
 export default async function Stream() {
   const query = await fetch("https://automated-aquarium-backend.vercel.app/fishFeeder", {
@@ -23,26 +24,28 @@ export default async function Stream() {
             </p>
           </div>
           <div className="flex gap-6">
-            <DataDisplay
-              sensor={{
-                key: "Temperature (ºC)",
-                value: fishFeeder.waterTemperature
-                  ? fishFeeder.waterTemperature.toFixed(2)
-                  : "N/A",
-              }}
-            />
-            <DataDisplay
-              sensor={{ key: "Times Fed", value: fishFeeder.count ?? "N/A" }}
-            />
-            <DataDisplay
-              sensor={{
-                key: "feednow",
-                value:
-                  fishFeeder.feednow !== undefined
-                    ? fishFeeder.feednow.toString()
+            <Suspense>
+              <DataDisplay
+                sensor={{
+                  key: "Temperature (ºC)",
+                  value: fishFeeder.waterTemperature
+                    ? fishFeeder.waterTemperature.toFixed(2)
                     : "N/A",
-              }}
-            />
+                }}
+              />
+              <DataDisplay
+                sensor={{ key: "Times Fed", value: fishFeeder.count ?? "N/A" }}
+              />
+              <DataDisplay
+                sensor={{
+                  key: "feednow",
+                  value:
+                    fishFeeder.feednow !== undefined
+                      ? fishFeeder.feednow.toString()
+                      : "N/A",
+                }}
+              />
+            </Suspense>
           </div>
         </div>
         {/* Big picture section */}
