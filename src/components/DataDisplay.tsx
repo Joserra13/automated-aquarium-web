@@ -1,9 +1,14 @@
+"use client";
+
 type Sensor = {
   key: string;
   value: string | number;
 };
 
 export default function DataDisplay({sensor}: { sensor: Sensor }) {
+
+  console.log("sensor.key:", sensor.key);
+  console.log("sensor.value:", sensor.value);
 
   return (
     <div className="flex flex-col items-center">
