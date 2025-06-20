@@ -2,12 +2,12 @@
 import useSWR from "swr";
 
 const fetcher = (url: string) =>
-  fetch(url, {
-    headers: new Headers({
-      "api-key": `${process.env.BACKEND_API_KEY}`,
-    }),
-    next: { revalidate: 3 }, // Revalidate every 3 seconds
-  }).then((res) => res.json());
+  fetch(url).then((res) => {
+    if (!res.ok) {
+      throw new Error("Network response was not ok: " + res.statusText);
+    }
+    return res.json();
+  });
 
 type Sensor = {
   key: string;
@@ -16,11 +16,13 @@ type Sensor = {
 
 export default function DataDisplay({ sensor }: { sensor: Sensor }) {
   const { data } = useSWR(
-    "https://automated-aquarium-backend.vercel.app/fishFeeder",
-    fetcher
+    "/api/getFishFeederData",
+    fetcher,{
+      refreshInterval: 1000, 
+      revalidateOnFocus: true, 
+      dedupingInterval: 2000
+    }
   );
-
-  console.log("DataDisplay Data:", data);
 
   return (
     <div className="flex flex-col items-center">
