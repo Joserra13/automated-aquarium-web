@@ -13,7 +13,8 @@ async function main() {
       process.env.INPUT_SITE_URL || "https://automated-aquarium.com";
     const batchSize = parseInt(process.env.INPUT_BATCH_SIZE || "50", 10);
     const fromEmail =
-      process.env.INPUT_FROM_EMAIL || 'newsletter-no-reply@automated-aquarium.com';
+      process.env.INPUT_FROM_EMAIL ||
+      "newsletter-no-reply@automated-aquarium.com";
 
     if (!blogMetadataStr) {
       throw new Error("Missing required input: blog_metadata");
@@ -46,9 +47,7 @@ async function main() {
     const resend = new Resend(resendApiKey);
 
     // Get all confirmed subscribers
-    const result = await pool.query(
-      "SELECT id, email FROM newsletter"
-    );
+    const result = await pool.query("SELECT id, email FROM newsletter");
     const subscribers = result.rows;
     console.log(`Found ${subscribers.length} confirmed subscribers`);
 
@@ -73,20 +72,23 @@ async function main() {
         );
 
         const results = await Promise.allSettled(
-          batch.map((subscriber) =>
-            sendEmailAndLog(resend, pool, subscriber, post, fromEmail, siteUrl)
-          )
+          batch.map(async (subscriber) => {
+            try {
+              // Respect the 2 requests per second limit by waiting 500ms * index
+              await new Promise((resolve) => setTimeout(resolve, 2000));
+
+              // Make sure to await and return the result
+              return await sendEmailAndLog(resend, pool, subscriber, post, fromEmail, siteUrl);
+            } catch (error) {
+              console.error(`Failed to send to ${subscriber.email}:`, error.message);
+              throw error;
+            }
+          })
         );
 
         results.forEach((result) => {
           result.status === "fulfilled" ? successCount++ : errorCount++;
         });
-
-        // Add delay between batches if remaining
-        if (i + batchSize < subscribers.length) {
-          console.log("Waiting 5 second between batches...");
-          await new Promise((resolve) => setTimeout(resolve, 5000));
-        }
       }
     }
 
