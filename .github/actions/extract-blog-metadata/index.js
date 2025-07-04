@@ -26,7 +26,7 @@ async function run() {
     
     // Get the git diff to find changed files
 
-    await exec.exec('git', ['diff', '--name-only', 'HEAD~4', 'HEAD'], options);
+    await exec.exec('git', ['diff', '--name-only', 'HEAD^^', 'HEAD'], options);
     
     // Filter for blog files
     const changedFiles = stdout
