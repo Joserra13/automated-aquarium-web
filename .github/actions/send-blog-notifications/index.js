@@ -84,8 +84,8 @@ async function main() {
 
         // Add delay between batches if remaining
         if (i + batchSize < subscribers.length) {
-          console.log("Waiting 2 second between batches...");
-          await new Promise((resolve) => setTimeout(resolve, 2000));
+          console.log("Waiting 5 second between batches...");
+          await new Promise((resolve) => setTimeout(resolve, 5000));
         }
       }
     }
