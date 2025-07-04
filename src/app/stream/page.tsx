@@ -65,7 +65,7 @@ export default async function Stream() {
         <div className="w-full aspect-video bg-gray-200 dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden flex items-center justify-center">
           {/* Replace src with your stream or image */}
           <img
-            src="/blog/the-automated-aquarium/IntroductionPicture.jpg"
+            src="/blog/the-automated-aquarium/IntroductionPicture.avif"
             alt="Aquarium Stream"
             className="object-cover w-full h-full"
           />
