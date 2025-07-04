@@ -21,7 +21,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 2  # Need at least 2 commits to detect changes
+          fetch-depth: 3  # Need at least 2 commits to detect changes
       
       - name: Extract blog metadata
         id: metadata
