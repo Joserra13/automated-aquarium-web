@@ -19,7 +19,7 @@ export default function Contact() {
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center rounded-lg"
-          style={{ backgroundImage: "url('/contact.webp')" }}
+          style={{ backgroundImage: "url('/contact.avif')" }}
         />
 
         {/* Content Centered */}
