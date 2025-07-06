@@ -11,7 +11,6 @@ async function main() {
     const resendApiKey = process.env.RESEND_API_KEY;
     const siteUrl =
       process.env.INPUT_SITE_URL || "https://automated-aquarium.com";
-    const batchSize = parseInt(process.env.INPUT_BATCH_SIZE || "50", 10);
     const fromEmail =
       process.env.INPUT_FROM_EMAIL ||
       "newsletter-no-reply@automated-aquarium.com";
@@ -64,31 +63,17 @@ async function main() {
         continue;
       }
 
-      // Send emails in batches
-      for (let i = 0; i < subscribers.length; i += batchSize) {
-        const batch = subscribers.slice(i, i + batchSize);
-        console.log(
-          `Processing batch ${Math.floor(i / batchSize) + 1} (${batch.length} subscribers)`
-        );
-
-        const results = await Promise.allSettled(
-          batch.map(async (subscriber) => {
-            try {
-              // Respect the 2 requests per second limit by waiting 500ms * index
-              await new Promise((resolve) => setTimeout(resolve, 2000));
-
-              // Make sure to await and return the result
-              return await sendEmailAndLog(resend, pool, subscriber, post, fromEmail, siteUrl);
-            } catch (error) {
-              console.error(`Failed to send to ${subscriber.email}:`, error.message);
-              throw error;
-            }
-          })
-        );
-
-        results.forEach((result) => {
-          result.status === "fulfilled" ? successCount++ : errorCount++;
-        });
+      // Send emails one after another (no batching)
+      for (const subscriber of subscribers) {
+        try {
+          // Respect the 2 requests per second limit by waiting 500ms between emails
+          await new Promise((resolve) => setTimeout(resolve, 3000));
+          await sendEmailAndLog(resend, pool, subscriber, post, fromEmail, siteUrl);
+          successCount++;
+        } catch (error) {
+          console.error(`Failed to send to ${subscriber.email}:`, error.message);
+          errorCount++;
+        }
       }
     }
 

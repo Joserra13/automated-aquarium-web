@@ -2,26 +2,22 @@ name: Blog Post Notification
 
 on:
   workflow_dispatch:
-    inputs:
-      blog_directory:
-        description: 'Path to the blog posts directory'
-        required: false
-        default: 'content/blog/**'
-  # push:
-  #   branches:
-  #     - main
-  #     # - devBranch
-  #   paths:
-  #     - 'content/blog/**'
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - 'content/blog/**.mdx'
 
 jobs:
-  process-and-notify:
+  extract-metadata:
     runs-on: ubuntu-latest
+    outputs:
+      metadata: ${{ steps.metadata.outputs.metadata }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 3  # Need at least 2 commits to detect changes
+          fetch-depth: 3  # Need at least 3 commits to detect changes bc docs are created in a different branch, then commited to dev and lastly to main.
       
       - name: Extract blog metadata
         id: metadata
@@ -29,18 +25,24 @@ jobs:
         with:
           blog_directory: 'content/blog'
 
-      # Add this debug step
-      # - name: Debug metadata
-      #   run: |
-      #     echo "Metadata output: ${{ steps.metadata.outputs.metadata }}"
+      # Optional debug step
+      - name: Debug metadata
+        run: |
+          echo "Metadata output: ${{ steps.metadata.outputs.metadata }}"
+
+  send-notifications:
+    needs: extract-metadata
+    if: ${{ needs.extract-metadata.outputs.metadata != '[]' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
       
-      - name: Send notifications if new posts found
-        if: ${{ steps.metadata.outputs.metadata != '[]' }}
+      - name: Send notifications
         uses: ./.github/actions/send-blog-notifications
         with:
-          blog_metadata: ${{ steps.metadata.outputs.metadata }}
+          blog_metadata: ${{ needs.extract-metadata.outputs.metadata }}
           database_url: ${{ secrets.DATABASE_URL }}
           resend_api_key: ${{ secrets.RESEND_API_KEY }}
           site_url: 'https://automated-aquarium.com'
-          batch_size: '50'
           from_email: 'newsletter-no-reply@automated-aquarium.com'
