@@ -26,6 +26,12 @@ export async function GET(req: NextRequest) {
       if (result.count === 0) {
         return NextResponse.redirect(new URL(`/unsubscribed`, req.url));
       }
+
+
+      const cetDate = new Date().toISOString();
+      const cetTime = new Date().toLocaleTimeString('es-ES', { hour12: false });
+      await sql`INSERT INTO unsuscribed_newsletter (email, date, timestamp) VALUES (${email}, ${cetDate}, ${cetTime})`;
+
       // Redirect the user to an empty page with a success message
       return NextResponse.redirect(new URL(`/unsubscribed?email=${email}`, req.url));
 
