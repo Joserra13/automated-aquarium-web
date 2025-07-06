@@ -29,7 +29,7 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-col items-center pt-8 pb-8">
               <Image
-                src="/aboutProject.webp"
+                src="/aboutProject.avif"
                 alt="avatar"
                 width={256}
                 height={256}
@@ -49,7 +49,7 @@ export default function AboutPage() {
           <div className="flex flex-col xl:grid xl:grid-cols-3 xl:gap-x-8 items-center p-4 sm:p-8">
             <div className="flex flex-col items-center pt-8 pb-8">
               <Image
-                src="/aboutMe.webp"
+                src="/aboutMe.avif"
                 alt="avatar"
                 width={192}
                 height={192}
