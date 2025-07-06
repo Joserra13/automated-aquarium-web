@@ -49,7 +49,7 @@ export default async function Stream() {
           {/* Main Stream Section */}
           <div className="lg:col-span-2">
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-2xl blur opacity-25 group-hover:opacity-40 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-2xl blur opacity-25"></div>
               <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden">
                 <div className="p-4 bg-gradient-to-r from-blue-500 to-cyan-500">
                   <div className="flex items-center justify-between">
@@ -67,7 +67,7 @@ export default async function Stream() {
                   <img
                     src="/blog/the-automated-aquarium/IntroductionPicture.avif"
                     alt="Aquarium Live Stream"
-                    className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover w-full h-full transition-transform duration-500"
                   />
                   <div className="absolute bottom-4 left-4 right-4">
                     <div className="bg-black/50 backdrop-blur-sm rounded-lg p-3">
@@ -142,7 +142,7 @@ export default async function Stream() {
             </div>
 
             {/* System Status */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
+            {/* <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
               <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-3">
                 <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center">
                   <span className="text-white text-sm font-bold">⚡</span>
@@ -172,7 +172,7 @@ export default async function Stream() {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* Quick Actions */}
             <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
