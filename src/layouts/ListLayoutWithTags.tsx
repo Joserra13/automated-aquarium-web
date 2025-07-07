@@ -87,7 +87,7 @@ export default function ListLayoutWithTags({
   return (
     <>
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="py-8 border-b border-gray-700 text-center">
+        <div className="py-8 border-b border-cyan-700 text-center">
           <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">
             Tag: {title}
           </h1>
@@ -119,7 +119,7 @@ export default function ListLayoutWithTags({
                         ) : (
                           <Link
                             href={`/tags/${slug(t)}`}
-                            className="block px-3 py-2 text-sm font-medium uppercase text-gray-300 hover:text-primary-500 hover:text-primary-500 hover:bg-gray-100 hover:bg-gray-700/30 rounded transition-colors"
+                            className="block px-3 py-2 text-sm font-medium uppercase text-gray-300 hover:text-primary-500 hover:text-primary-500 hover:bg-gray-700/30 rounded transition-colors"
                             aria-label={`View posts tagged ${t}`}
                           >
                             {`${t} (${tagCounts[t]})`}
@@ -135,7 +135,7 @@ export default function ListLayoutWithTags({
           
           {/* Main content */}
           <div className="flex-grow">
-            <ul className="divide-y">
+            <ul className="divide-y divide-cyan-700">
               {displayPosts.map((post) => {
                 const { path, date, title, summary, tags } = post
                 return (
