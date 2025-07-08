@@ -1,5 +1,6 @@
 import DataDisplay from "@/components/DataDisplay";
 import { SWRConfig } from "swr";
+import RealTimeComponent from "@/components/realTime";
 
 export default async function Stream() {
   const initialData = await fetch(
@@ -73,7 +74,7 @@ export default async function Stream() {
                     <div className="bg-black/50 backdrop-blur-sm rounded-lg p-3">
                       <div className="flex items-center justify-between text-white text-sm">
                         <span>🐠 Aquarium View</span>
-                        <span>{new Date().toLocaleTimeString()}</span>
+                        <RealTimeComponent />
                       </div>
                     </div>
                   </div>
