@@ -32,9 +32,8 @@ export default function Header() {
             <li>
               <Link
                 href="/"
-                className={`hover:text-cyan-700 ${
-                  pathname === "/" ? "text-cyan-500" : "text-white"
-                }`}
+                className={`hover:text-cyan-700 ${pathname === "/" ? "text-cyan-500" : "text-white"
+                  }`}
               >
                 Home
               </Link>
@@ -42,7 +41,7 @@ export default function Header() {
             <li>
               <Link
                 href="/stream"
-                className={`hover:text-cyan-700 ${pathname === "/stream" ? "text-cyan-500" : "text-white"}`}
+                className={`hover:text-cyan-700 ${pathname.startsWith("/stream") ? "text-cyan-500" : "text-white"}`}
               >
                 Stream
               </Link>
@@ -50,9 +49,8 @@ export default function Header() {
             <li>
               <Link
                 href="/blog"
-                className={`hover:text-cyan-700 ${
-                  pathname.startsWith("/blog") ? "text-cyan-500" : "text-white"
-                }`}
+                className={`hover:text-cyan-700 ${pathname.startsWith("/blog") ? "text-cyan-500" : "text-white"
+                  }`}
               >
                 Blog
               </Link>
@@ -60,9 +58,8 @@ export default function Header() {
             <li>
               <Link
                 href="/about"
-                className={`hover:text-cyan-700 ${
-                  pathname === "/about" ? "text-cyan-500" : "text-white"
-                }`}
+                className={`hover:text-cyan-700 ${pathname === "/about" ? "text-cyan-500" : "text-white"
+                  }`}
               >
                 About
               </Link>
@@ -70,9 +67,8 @@ export default function Header() {
             <li>
               <Link
                 href="/contact"
-                className={`hover:text-cyan-700 ${
-                  pathname === "/contact" ? "text-cyan-500" : "text-white"
-                }`}
+                className={`hover:text-cyan-700 ${pathname === "/contact" ? "text-cyan-500" : "text-white"
+                  }`}
               >
                 Contact
               </Link>
@@ -104,52 +100,46 @@ export default function Header() {
         </div>
         <nav
           id="mobile-nav"
-          className={`md:hidden absolute top-full left-0 right-0 m-8 ${
-            isMobileNavVisible ? "" : "hidden"
-          } bg-gray-800 rounded-lg p-4`}
+          className={`md:hidden absolute top-full left-0 right-0 m-8 ${isMobileNavVisible ? "" : "hidden"
+            } bg-gray-800 rounded-lg p-4`}
         >
           <ul className="flex flex-col gap-y-4 mt-4">
             <Link
               href="/"
-              className={`hover:bg-cyan-800 ${
-                pathname === "/" ? "text-cyan-500" : "text-white"
-              } p-1`}
+              className={`hover:bg-cyan-800 ${pathname === "/" ? "text-cyan-500" : "text-white"
+                } p-1`}
               onClick={handleNavItemClick}
             >
               <li>Home</li>
             </Link>
             <Link
               href="/stream"
-              className={`hover:bg-cyan-800 ${
-                pathname === "/stream" ? "text-cyan-500" : "text-white"
-              } p-1`}
+              className={`hover:bg-cyan-800 ${pathname.startsWith("/stream") ? "text-cyan-500" : "text-white"
+                } p-1`}
               onClick={handleNavItemClick}
             >
               <li>Stream</li>
             </Link>
             <Link
               href="/blog"
-              className={`hover:bg-cyan-800 ${
-                pathname.startsWith("/blog") ? "text-cyan-500" : "text-white"
-              } p-1`}
+              className={`hover:bg-cyan-800 ${pathname.startsWith("/blog") ? "text-cyan-500" : "text-white"
+                } p-1`}
               onClick={handleNavItemClick}
             >
               <li>Blog</li>
             </Link>
             <Link
               href="/about"
-              className={`hover:bg-cyan-800 ${
-                pathname === "/about" ? "text-cyan-500" : "text-white"
-              } p-1`}
+              className={`hover:bg-cyan-800 ${pathname === "/about" ? "text-cyan-500" : "text-white"
+                } p-1`}
               onClick={handleNavItemClick}
             >
               <li>About</li>
             </Link>
             <Link
               href="/contact"
-              className={`hover:bg-cyan-800 ${
-                pathname === "/contact" ? "text-cyan-500" : "text-white"
-              } p-1`}
+              className={`hover:bg-cyan-800 ${pathname === "/contact" ? "text-cyan-500" : "text-white"
+                } p-1`}
               onClick={handleNavItemClick}
             >
               <li>Contact</li>
