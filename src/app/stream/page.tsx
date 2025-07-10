@@ -82,13 +82,8 @@ export default async function Stream() {
                       }}
                     />
                   </div>
-                  <div className="p-4 bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl border border-purple-800">
-                    <DataDisplay
-                      sensor={{
-                        tag: "Feed Status",
-                        key: "feednow",
-                      }}
-                    />
+                  <div className="p-4 flex flex-col items-center bg-gradient-to-r from-cyan-900/20 to-blue-900/20 rounded-xl border border-cyan-800 hover:bg-cyan-500">
+                    See live data
                   </div>
                 </div>
               </SWRConfig>
