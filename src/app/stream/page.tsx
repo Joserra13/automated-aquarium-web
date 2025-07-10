@@ -1,6 +1,7 @@
 import DataDisplay from "@/components/DataDisplay";
 import { SWRConfig } from "swr";
 import RealTimeComponent from "@/components/realTime";
+import Link from "@/components/Link";
 
 export default async function Stream() {
   const initialData = await fetch(
@@ -82,9 +83,11 @@ export default async function Stream() {
                       }}
                     />
                   </div>
-                  <div className="p-4 flex flex-col items-center bg-gradient-to-r from-cyan-900/20 to-blue-900/20 rounded-xl border border-cyan-800 hover:bg-cyan-500">
-                    See live data
-                  </div>
+                  <Link href="/stream/dashboard" className="p-4 flex flex-col items-center justify-center bg-gradient-to-r from-cyan-900/20 to-blue-900/20 rounded-xl border border-cyan-800 hover:bg-cyan-500 cursor-pointer transition-colors">
+                      <span className="text-lg font-bold flex items-center justify-center h-full">
+                        See live data
+                      </span>
+                  </Link>
                 </div>
               </SWRConfig>
             </div>
