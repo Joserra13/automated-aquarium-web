@@ -29,7 +29,7 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-col items-center pt-8 pb-8">
               <Image
-                src="/aboutProject.avif"
+                src="/blog/the-automated-aquarium/IntroductionPicture.avif"
                 alt="avatar"
                 width={256}
                 height={256}
