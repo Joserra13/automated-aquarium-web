@@ -89,7 +89,7 @@ export default function Home({ posts }: any) {
           </div>
         </div>
       </div>
-      {/* {posts.length > MAX_DISPLAY && (
+      {posts.length > MAX_DISPLAY && (
         <div className="flex justify-end text-base leading-6 font-medium mt-6">
           <Link
             href="/tags"
@@ -99,7 +99,7 @@ export default function Home({ posts }: any) {
             All Posts &rarr;
           </Link>
         </div>
-      )} */}
+      )}
     </div>
   );
 }
