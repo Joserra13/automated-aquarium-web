@@ -153,7 +153,7 @@ function createEmailTemplate(post, subscriber, siteUrl) {
       <div style="background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); max-width: 520px; margin: 0 auto; padding: 32px 28px; font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;">
         <div style="text-align: center;">
           <img src="${siteUrl}/favicon.ico" alt="Automated Aquarium Logo" style="width: 64px; margin-bottom: 18px;" />
-          <h1 style="color: #222; font-size: 1.7em; margin-bottom: 8px;">New Blog Post Alert!</h1>
+          <h1 style="color: #222; font-size: 1.7em; margin-bottom: 8px;">Automated Aquarium: New Blog Post Alert!</h1>
           <h2 style="color: #007bff; font-size: 1.2em; margin-bottom: 18px;">${post.title}</h2>
         </div>
         ${post.summary ? `<p style="color: #444; font-size: 1em; line-height: 1.6; margin-bottom: 24px;">${post.summary}</p>` : ""}
