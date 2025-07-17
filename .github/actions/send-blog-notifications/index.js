@@ -163,14 +163,12 @@ function createEmailTemplate(post, subscriber, siteUrl) {
             Read Full Post
           </a>
         </div>
-                ${post.imageUrl
-      ? `
+        ${post.imageUrl ? `
           <div style="text-align: center; margin-bottom: 22px;">
             <img src="${post.imageUrl}" alt="Blog Post Image" style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
           </div>
-        `
-      : ""
-    }
+        ` : ""}
+      </div>
       <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
         <p style="font-size: 12px; color: #999;">
           You received this email because you subscribed to updates from the automated aquarium blog.<br>
