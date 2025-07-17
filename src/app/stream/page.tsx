@@ -1,38 +1,8 @@
-import DataDisplay from "@/components/DataDisplay";
-import { SWRConfig } from "swr";
+import LiveSensorDataHeader from "@/components/LiveSensorDataHeader";
 import RealTimeComponent from "@/components/realTime";
-import { Suspense } from "react";
 
 export default async function Stream() {
-  const initialData = await fetch(
-    "https://automated-aquarium-backend.vercel.app/fishFeeder",
-    {
-      // const query = await fetch("http://localhost:3000/fishFeeder", {
-      headers: new Headers({
-        "api-key": `${process.env.BACKEND_API_KEY}`,
-      }),
-      cache: "no-store",
-    }
-  )
-    .then((res) => res.json())
-    .catch((error) => {
-      console.error("Error fetching initial data:", error);
-      return null;
-    });
-
-  const fallback = {
-    "https://automated-aquarium-backend.vercel.app/fishFeeder": initialData || {
-      schedule0Enabled: true,
-      feednow: false,
-      schedule2Enabled: false,
-      schedule2: "00:00",
-      schedule1Enabled: false,
-      schedule0: "00:00",
-      schedule1: "00:00",
-      count: 31,
-      waterTemperature: 0.62842,
-    },
-  };
+  
 
   return (
     <div className="min-h-screen from-gray-900 via-gray-800 to-blue-900">
@@ -59,39 +29,7 @@ export default async function Stream() {
                   Live Sensors
                 </h3>
               </div>
-
-              <Suspense fallback={<div>Loading sensor data...</div>}>
-                <SWRConfig value={{ fallback }}>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="p-4 bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl border border-blue-800">
-                      <DataDisplay
-                        sensor={{
-                          tag: "Water Temperature",
-                          key: "waterTemperature",
-                        }}
-                      />
-                    </div>
-
-                    <div className="p-4 bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl border border-green-800">
-                      <DataDisplay sensor={{ tag: "Times Fed Today", key: "count" }} />
-                    </div>
-
-                    <div className="p-4 bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl border border-purple-800">
-                      <DataDisplay
-                        sensor={{
-                          tag: "Feed Status",
-                          key: "feednow",
-                        }}
-                      />
-                    </div>
-                    {/* <Link href="/stream/dashboard" className="p-4 flex flex-col items-center justify-center bg-gradient-to-r from-cyan-900/20 to-blue-900/20 rounded-xl border border-cyan-800 hover:bg-cyan-500 cursor-pointer transition-colors">
-                      <span className="text-lg font-bold flex items-center justify-center h-full">
-                        See live data
-                      </span>
-                  </Link> */}
-                  </div>
-                </SWRConfig>
-              </Suspense>
+              <LiveSensorDataHeader />
             </div>
           </div>
 
