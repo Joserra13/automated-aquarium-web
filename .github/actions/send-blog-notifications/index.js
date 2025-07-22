@@ -126,7 +126,7 @@ async function sendEmailAndLog(
     const { error } = await resend.emails.send({
       from: fromEmail,
       to: subscriber.email,
-      subject: `New Blog Post: ${post.title}`,
+      subject: `New Automated Aquarium Blog Post: ${post.title}`,
       html: createEmailTemplate(post, subscriber, siteUrl),
     });
 
