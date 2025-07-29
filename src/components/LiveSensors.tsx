@@ -10,7 +10,6 @@ const [updateDate, setUpdateDate] = useState(new Date().toLocaleTimeString());
   
   function handleDataUpdate() {
     // Handle data update logic here
-    console.log("Data updated");
     setUpdateDate(new Date().toLocaleTimeString());
   }
 
