@@ -68,10 +68,20 @@ async function main() {
         try {
           // Respect the 2 requests per second limit by waiting 500ms between emails
           await new Promise((resolve) => setTimeout(resolve, 3000));
-          await sendEmailAndLog(resend, pool, subscriber, post, fromEmail, siteUrl);
+          await sendEmailAndLog(
+            resend,
+            pool,
+            subscriber,
+            post,
+            fromEmail,
+            siteUrl
+          );
           successCount++;
         } catch (error) {
-          console.error(`Failed to send to ${subscriber.email}:`, error.message);
+          console.error(
+            `Failed to send to ${subscriber.email}:`,
+            error.message
+          );
           errorCount++;
         }
       }
@@ -116,7 +126,7 @@ async function sendEmailAndLog(
     const { error } = await resend.emails.send({
       from: fromEmail,
       to: subscriber.email,
-      subject: `New Blog Post: ${post.title}`,
+      subject: `New Automated Aquarium Blog Post: ${post.title}`,
       html: createEmailTemplate(post, subscriber, siteUrl),
     });
 
@@ -139,17 +149,26 @@ async function sendEmailAndLog(
 
 function createEmailTemplate(post, subscriber, siteUrl) {
   return `
-    <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-      <h1 style="color: #333;">There is a new post at the Automated Aquarium blog</h1>
-      <h3 style="color: #333;">${post.title}</h1>
-      ${post.summary ? `<p style="color: #666;">${post.summary}</p>` : ""}
-      <a href="${siteUrl}/blog/${post.slug}"
-        style="display: inline-block; padding: 10px 20px;
-              background-color: #007bff; color: white;
-              text-decoration: none; border-radius: 5px;
-              margin: 15px 0;">
-        Read Full Post
-      </a>
+    <div style="background: #f6f8fa; padding: 40px 0;">
+      <div style="background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); max-width: 520px; margin: 0 auto; padding: 32px 28px; font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;">
+        <div style="text-align: center;">
+          <img src="${siteUrl}/favicon.ico" alt="Automated Aquarium Logo" style="width: 64px; margin-bottom: 18px;" />
+          <h1 style="color: #222; font-size: 1.7em; margin-bottom: 8px;">Automated Aquarium: New Blog Post Alert!</h1>
+          <h2 style="color: #007bff; font-size: 1.2em; margin-bottom: 18px;">${post.title}</h2>
+        </div>
+        ${post.summary ? `<p style="color: #444; font-size: 1em; line-height: 1.6; margin-bottom: 24px;">${post.summary}</p>` : ""}
+        <div style="text-align: center; margin-bottom: 28px;">
+          <a href="${siteUrl}/blog/${post.slug}"
+            style="display: inline-block; padding: 12px 32px; background: linear-gradient(90deg,#007bff 0%,#00c6ff 100%); color: #fff; font-weight: 600; border-radius: 6px; text-decoration: none; font-size: 1em; box-shadow: 0 2px 8px rgba(0,123,255,0.08); transition: background 0.2s;">
+            Read Full Post
+          </a>
+        </div>
+        ${post.imageUrl ? `
+          <div style="text-align: center; margin-bottom: 22px;">
+            <img src="${post.imageUrl}" alt="Blog Post Image" style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
+          </div>
+        ` : ""}
+      </div>
       <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
         <p style="font-size: 12px; color: #999;">
           You received this email because you subscribed to updates from the automated aquarium blog.<br>

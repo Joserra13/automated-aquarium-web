@@ -1,0 +1,51 @@
+---
+title: The GitHub repositories
+date: "2025-07-17"
+tags: ["github", "code"]
+draft: false
+imageUrl: "../../../blog/github-repo/GitHubRepositories.avif"
+summary: How am I storing the Automated Aquarium source code? Today I will explain how I am handling the infrastructure of the project.
+---
+
+>Don't forget to subscribe to the [newsletter](../../) to be notified once I post a new entry to the blog. Great news are coming!!
+
+## 📦 How is the code organized?
+
+Hi again, automated aquarium's geeks!
+
+As the Automated Aquarium project has grown, keeping things organized has become essential. In this post, I want to share how I’m managing the source code and infrastructure behind the scenes.
+
+![GitHubRepositories](github-repo/GitHubRepositories.avif)
+
+## 🗂️ Why multiple repositories?
+
+When building a project that combines hardware, backend, and frontend, it’s easy for things to get messy. To keep everything clean and maintainable, I’ve split the codebase into three dedicated GitHub repositories:
+
+1. [**automated-aquarium**](https://github.com/Joserra13/automated-aquarium)  
+   This is where all the magic happens on the end devices. It contains the firmware and logic that run directly on the aquarium hardware, handling everything from sensor readings to actuator control.
+
+2. [**automated-aquarium-web**](https://github.com/Joserra13/automated-aquarium-web)  
+   This repository powers the Next.js web application (yes, the very site you’re reading!). Deployed on [Vercel](https://vercel.com/home), it’s the main user interface for monitoring, controlling, and visualizing both real-time and historical aquarium data.
+
+3. [**automated-aquarium-backend**](https://github.com/Joserra13/automated-aquarium-backend)  
+    Acting as the project’s central nervous system, this backend, built with Node.js, receives data from the devices, processes it, and exposes it to the frontend. It’s the bridge that connects the hardware with the web app.
+
+## 🛠️ Why this structure?
+
+By separating the project into these repositories, I can:
+
+- Develop, test, and deploy each part independently.
+- Make the system more modular and scalable.
+- Collaborate more easily (and keep my sanity!).
+
+This approach lets me focus on improving each component without worrying about breaking the others.
+
+---
+
+If you’re curious about the technical details or want to contribute, feel free to check out the repositories on [GitHub](https://github.com/Joserra13?tab=repositories&q=automated-aquarium&type=&language=&sort=). As always, I’m happy to answer questions or hear your suggestions, just reach out through my [contact page](../../contact/).
+
+Thanks for following along, and stay tuned for more behind-the-scenes updates! 🚀
+
+Best Regards,
+
+Joserra

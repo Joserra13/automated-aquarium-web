@@ -21,7 +21,8 @@ export default async function Stream() {
 
           <LiveSensors />
 
-          <div className="grid lg:grid-cols-4 gap-8">
+          {/* <div className="grid lg:grid-cols-4 gap-8"> */}
+          <div className="gap-8">
             {/* Main Stream Section */}
             <div className="lg:col-span-3">
               <div className="relative group">
@@ -59,7 +60,7 @@ export default async function Stream() {
             </div>
 
             {/* Quick Actions - Now on the right side */}
-            <div className="lg:col-span-1">
+            {/* <div className="lg:col-span-1">
               <div className="bg-gray-800 rounded-2xl shadow-xl p-6">
                 <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
                   <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
@@ -80,7 +81,7 @@ export default async function Stream() {
                   </button>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

@@ -66,6 +66,8 @@ async function run() {
           title: data.title,
           slug: fileName,
           date: data.date || new Date().toISOString(),
+          imageUrl: data.imageUrl || "",
+          summary: data.summary || ""
         });
         
         core.info(`Processed: ${data.title}`);

@@ -37,7 +37,7 @@ export default function PostLayout({
     <SectionContainer>
       <ScrollTopAndComment />
       <article>
-        <div className="xl:divide-y divide-gray-700 xl:divide-gray-700 divide-y">
+        <div className="xl:divide-y divide-cyan-700 xl:divide-cyan-700 divide-y">
           <header className="pt-6 xl:pb-6">
             <div className="space-y-1 text-center">
               <dl className="space-y-10">
@@ -58,8 +58,8 @@ export default function PostLayout({
               </div>
             </div>
           </header>
-          <div className="grid-rows-[auto_1fr] pb-8 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0 divide-gray-700">
-            <dl className="pt-6 pb-10 xl:border-b xl:pt-11 border-gray-700">
+          <div className="grid-rows-[auto_1fr] pb-8 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0 divide-cyan-700">
+            <dl className="pt-6 pb-10 xl:border-b xl:pt-11 border-cyan-700">
               <dt className="sr-only">Authors</dt>
               <dd>
                 <ul className="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-y-8 xl:space-x-0">
@@ -86,7 +86,7 @@ export default function PostLayout({
                 </ul>
               </dd>
               <dd>
-              <div className="text-sm leading-5 font-medium xl:col-start-1 xl:row-start-2 xl:divide-y divide-gray-700 divide-y">
+              <div className="text-sm leading-5 font-medium xl:col-start-1 xl:row-start-2 xl:divide-y divide-cyan-700 divide-y">
                 {tags && (
                   <div className="py-4 xl:py-8">
                     <h2 className="text-xs tracking-wide uppercase text-gray-400">
@@ -103,7 +103,7 @@ export default function PostLayout({
                   <div className="py-4 xl:block xl:space-y-8 xl:py-8">
                     {prev && prev.path && (
                       <div>
-                        <h2 className="text-xs tracking-wide  uppercase text-gray-400">
+                        <h2 className="text-xs tracking-wide uppercase text-gray-400">
                           Previous Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-400">
@@ -113,7 +113,7 @@ export default function PostLayout({
                     )}
                     {next && next.path && (
                       <div>
-                        <h2 className="text-xs tracking-wide  uppercase text-gray-400">
+                        <h2 className="text-xs tracking-wide uppercase text-gray-400">
                           Next Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-400">
@@ -135,12 +135,12 @@ export default function PostLayout({
               </div>
               </dd>
             </dl>
-            <div className="divide-y  xl:col-span-3 xl:row-span-2 xl:pb-0 divide-gray-700 ml-16">
+            <div className="divide-y xl:col-span-3 xl:row-span-2 xl:pb-0 divide-cyan-700 ml-16">
               <div className="prose-invert max-w-none pt-10 pb-8">
                 {children}
               </div>
             </div>
-            <footer className="divide-y divide-gray-700">
+            <footer className="divide-y divide-cyan-700">
               
             </footer>
           </div>

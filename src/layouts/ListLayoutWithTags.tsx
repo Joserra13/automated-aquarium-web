@@ -22,8 +22,6 @@ interface ListLayoutProps {
 
 function Pagination({ totalPages, currentPage }: PaginationProps) {
   const pathname = usePathname()
-  const segments = pathname.split('/')
-  const lastSegment = segments[segments.length - 1]
   const basePath = pathname
     .replace(/^\//, '') // Remove leading slash
     .replace(/\/page\/\d+$/, '') // Remove any trailing /page
@@ -44,7 +42,7 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
           <Link
             href={currentPage - 1 === 1 ? `/${basePath}/` : `/${basePath}/page/${currentPage - 1}`}
             rel="prev"
-            className="px-4 py-2 border rounded transition-colors duration-200 bg-cyan-800 text-gray-200 hover:bg-cyan-300 border-cyan-500"
+            className="px-4 py-2 border rounded transition-colors duration-200 bg-cyan-800 text-gray-200 hover:bg-cyan-500 border-cyan-500"
           >
             Previous
           </Link>
@@ -58,10 +56,10 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
           </button>
         )}
         {nextPage && (
-          <Link 
-            href={`/${basePath}/page/${currentPage + 1}`} 
+          <Link
+            href={`/${basePath}/page/${currentPage + 1}`}
             rel="next"
-            className="px-4 py-2 border rounded transition-colors duration-200 bg-cyan-800 text-gray-200 hover:bg-cyan-300 border-cyan-500"
+            className="px-4 py-2 border rounded transition-colors duration-200 bg-cyan-800 text-gray-200 hover:bg-cyan-500 border-cyan-500"
           >
             Next
           </Link>
@@ -87,23 +85,23 @@ export default function ListLayoutWithTags({
   return (
     <>
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="py-8 border-b border-gray-700 text-center">
+        <div className="py-8 border-b border-cyan-700 text-center">
           <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">
             Tag: {title}
           </h1>
         </div>
-        
+
         <div className="mt-6 flex flex-col sm:flex-row gap-8">
           {/* Sidebar */}
           <div className="sm:block w-half sm:w-72 flex-shrink-0 sticky top-8 self-start">
             <div className="rounded-lg shadow-md bg-cyan-700 shadow-cyan-700/40 overflow-hidden py-2">
               <div className="px-6 py-5">
-                {pathname.startsWith('/tags') ? (
+                {pathname === '/tags' ? (
                   <h3 className="text-primary-500 font-bold uppercase mb-4">All Posts</h3>
                 ) : (
                   <Link
                     href={`/tags`}
-                    className="font-bolduppercase text-gray-300 hover:text-primary-500 hover:text-primary-500 mb-4 block"
+                    className="font-bold uppercase text-gray-300 hover:text-primary-500 hover:text-primary-500 mb-4 block"
                   >
                     All Posts
                   </Link>
@@ -119,7 +117,7 @@ export default function ListLayoutWithTags({
                         ) : (
                           <Link
                             href={`/tags/${slug(t)}`}
-                            className="block px-3 py-2 text-sm font-medium uppercase text-gray-300 hover:text-primary-500 hover:text-primary-500 hover:bg-gray-100 hover:bg-gray-700/30 rounded transition-colors"
+                            className="block px-3 py-2 text-sm font-medium uppercase text-gray-300 hover:text-primary-500 hover:text-primary-500 hover:bg-gray-700/30 rounded transition-colors"
                             aria-label={`View posts tagged ${t}`}
                           >
                             {`${t} (${tagCounts[t]})`}
@@ -132,10 +130,10 @@ export default function ListLayoutWithTags({
               </div>
             </div>
           </div>
-          
+
           {/* Main content */}
           <div className="flex-grow">
-            <ul className="divide-y">
+            <ul className="divide-y divide-cyan-700">
               {displayPosts.map((post) => {
                 const { path, date, title, summary, tags } = post
                 return (
@@ -171,7 +169,7 @@ export default function ListLayoutWithTags({
                 )
               })}
             </ul>
-            
+
             {pagination && pagination.totalPages > 1 && (
               <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
             )}
