@@ -15,7 +15,7 @@ type Sensor = {
   tag: string;
 };
 
-export default function DataDisplay({ sensor, onDataUpdateAction }: { sensor: Sensor; onDataUpdateAction: (data: any) => void }) {
+export default function DataDisplay({ sensor, onDataUpdateAction }: { sensor: Sensor; onDataUpdateAction?: (data: any) => void }) {
   const { data } = useSWR(
     "/api/getFishFeederData",
     fetcher, {
