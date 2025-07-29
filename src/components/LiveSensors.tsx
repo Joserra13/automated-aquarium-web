@@ -3,11 +3,13 @@ import DataDisplay from "@/components/DataDisplay";
 import { SWRConfig } from "swr";
 import Link from "@/components/Link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function LiveSensors() {
 
-const [updateDate, setUpdateDate] = useState(new Date().toLocaleTimeString());
-  
+  const [updateDate, setUpdateDate] = useState(new Date().toLocaleTimeString());
+  const pathname = usePathname();
+
   function handleDataUpdate() {
     // Handle data update logic here
     setUpdateDate(new Date().toLocaleTimeString());
@@ -69,11 +71,11 @@ const [updateDate, setUpdateDate] = useState(new Date().toLocaleTimeString());
               />
             </div>
             <Link
-              href="/stream/dashboard"
+              href={`${pathname === "/stream" ? "/stream/dashboard" : "/stream"}`}
               className="p-4 flex flex-col items-center justify-center bg-gradient-to-r from-cyan-900/20 to-blue-900/20 rounded-xl border border-cyan-800 hover:bg-cyan-500 cursor-pointer transition-colors"
             >
               <span className="text-lg font-bold flex items-center justify-center h-full">
-                See live data
+                {`${pathname === "/stream" ? "See live data" : "Watch stream"}`}
               </span>
             </Link>
           </div>

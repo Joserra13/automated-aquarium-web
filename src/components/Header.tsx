@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 // Define the Header component
 export default function Header() {
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
-  const pathname = usePathname(); // <-- Add this line
+  const pathname = usePathname();
 
   const handleNavItemClick = () => {
     setIsMobileNavVisible(false);
