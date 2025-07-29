@@ -10,9 +10,8 @@ export default function LiveSensors() {
   const [updateDate, setUpdateDate] = useState(new Date().toLocaleTimeString());
   const pathname = usePathname();
 
-  function handleDataUpdate() {
-    // Handle data update logic here
-    setUpdateDate(new Date().toLocaleTimeString());
+  function handleDataUpdate(timestamp: string) {
+    setUpdateDate(timestamp);
   }
 
   const fallback = {
@@ -24,8 +23,8 @@ export default function LiveSensors() {
       schedule1Enabled: false,
       schedule0: "00:00",
       schedule1: "00:00",
-      count: 31,
-      waterTemperature: 0.62842,
+      count: 0,
+      waterTemperature: 0.00,
     },
   };
 

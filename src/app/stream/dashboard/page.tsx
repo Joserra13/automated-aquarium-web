@@ -1,5 +1,5 @@
 import LiveSensors from "@/components/LiveSensors";
-import { LineChart } from "@/components/LineChart";
+import ChartDash from "@/components/ChartDash";
 
 export default async function Stream() {
 
@@ -20,7 +20,7 @@ export default async function Stream() {
 
           <LiveSensors />
           
-          <LineChart />
+          <ChartDash />
 
         </div>
       </div>

@@ -65,3 +65,13 @@ body {
     transform: scale(1.0);
   }
 }
+
+@layer base {
+  :root {
+    --chart-1: oklch(69.77% 0.14055 232.868);
+    --chart-2: oklch(0.696 0.17 162.48);
+    --chart-3: oklch(0.769 0.188 70.08);
+    --chart-4: oklch(0.627 0.265 303.9);
+    --chart-5: oklch(0.645 0.246 16.439);
+  }
+}

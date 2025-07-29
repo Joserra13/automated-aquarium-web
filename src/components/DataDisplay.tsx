@@ -27,7 +27,7 @@ export default function DataDisplay({ sensor, onDataUpdateAction }: { sensor: Se
 
   useEffect(() => {
     if (onDataUpdateAction && data) {
-      onDataUpdateAction(data);
+      onDataUpdateAction(data.timestamp);
     }
   }, [data, onDataUpdateAction]);
 
