@@ -1,5 +1,6 @@
 "use client";
 import useSWR from "swr";
+import { useEffect } from "react";
 
 const fetcher = (url: string) =>
   fetch(url).then((res) => {
@@ -14,15 +15,21 @@ type Sensor = {
   tag: string;
 };
 
-export default function DataDisplay({ sensor }: { sensor: Sensor }) {
+export default function DataDisplay({ sensor, onDataUpdateAction }: { sensor: Sensor; onDataUpdateAction?: (data: any) => void }) {
   const { data } = useSWR(
     "/api/getFishFeederData",
-    fetcher,{
-      refreshInterval: 1000, 
-      revalidateOnFocus: true, 
-      dedupingInterval: 2000
-    }
+    fetcher, {
+    refreshInterval: 1000,
+    revalidateOnFocus: true,
+    dedupingInterval: 2000
+  }
   );
+
+  useEffect(() => {
+    if (onDataUpdateAction && data) {
+      onDataUpdateAction(data);
+    }
+  }, [data, onDataUpdateAction]);
 
   return (
     <div className="flex flex-col items-center">

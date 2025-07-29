@@ -1,8 +1,7 @@
-import LiveSensorDataHeader from "@/components/LiveSensorDataHeader";
 import RealTimeComponent from "@/components/realTime";
+import LiveSensors from "@/components/LiveSensors";
 
 export default async function Stream() {
-  
 
   return (
     <div className="min-h-screen from-gray-900 via-gray-800 to-blue-900">
@@ -19,19 +18,8 @@ export default async function Stream() {
 
         <div className="max-w-7xl mx-auto">
           {/* Sensor Data Panel - Now on top */}
-          <div className="mb-8">
-            <div className="bg-gray-800 rounded-2xl shadow-xl p-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white text-sm font-bold">📊</span>
-                </div>
-                <h3 className="text-xl font-bold ext-white">
-                  Live Sensors
-                </h3>
-              </div>
-              <LiveSensorDataHeader />
-            </div>
-          </div>
+
+          <LiveSensors />
 
           {/* <div className="grid lg:grid-cols-4 gap-8"> */}
           <div className="gap-8">
