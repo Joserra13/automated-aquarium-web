@@ -9,13 +9,13 @@ export async function GET() {
     await client.connect();
     const db = client.db("AutomatedAquarium");
     const collection = db.collection('FishFeeder');
-    
-    const mongoData = await collection.find().toArray();
-    
+
+    const mongoData = (await collection.find().sort({ timestamp: -1 }).limit(20).toArray()).reverse();
+
     // Log the data (optional)
-    mongoData.forEach(entry => {
-      console.log(`${entry.timestamp} has ${entry.waterTemperature}`);
-    });
+    // mongoData.forEach(entry => {
+    //   console.log(`${entry.timestamp} has ${entry.waterTemperature}`);
+    // });
     
     return Response.json(mongoData);
   } catch (err) {

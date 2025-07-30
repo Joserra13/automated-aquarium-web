@@ -73,7 +73,7 @@ export default function LineChartComponent() {
     <LineChart
       width={500}
       height={300}
-      data={data.slice(data.length - 20, data.length)}
+      data={data}
       margin={{
       top: 5,
       right: 30,
