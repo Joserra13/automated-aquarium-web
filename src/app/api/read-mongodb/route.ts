@@ -10,7 +10,7 @@ export async function GET() {
     const db = client.db("AutomatedAquarium");
     const collection = db.collection('FishFeeder');
     
-    const mongoData = await collection.find().sort({ timestamp: -1 }).toArray();
+    const mongoData = await collection.find().toArray();
     
     // Log the data (optional)
     mongoData.forEach(entry => {

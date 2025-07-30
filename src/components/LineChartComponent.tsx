@@ -5,46 +5,32 @@ import { useEffect, useState } from 'react';
 // Static data as fallback
 const staticData = [
   {
-    name: 'Page A',
-    uv: 4000,
+    timestamp: 'Day 1',   
     waterTemp: 2400,
-    amt: 2400,
   },
   {
-    name: 'Page B',
-    uv: 3000,
+    timestamp: 'Day 2',
     waterTemp: 1398,
-    amt: 2210,
   },
   {
-    name: 'Page C',
-    uv: 2000,
+    timestamp: 'Day 3',
     waterTemp: 9800,
-    amt: 2290,
   },
   {
-    name: 'Page D',
-    uv: 2780,
+    timestamp: 'Day 4',
     waterTemp: 3908,
-    amt: 2000,
   },
   {
-    name: 'Page E',
-    uv: 1890,
+    timestamp: 'Day 5',
     waterTemp: 4800,
-    amt: 2181,
   },
   {
-    name: 'Page F',
-    uv: 2390,
+    timestamp: 'Day 6',
     waterTemp: 3800,
-    amt: 2500,
   },
   {
-    name: 'Page G',
-    uv: 3490,
+    timestamp: 'Day 7',
     waterTemp: 4300,
-    amt: 2100,
   },
 ];
 
