@@ -1,4 +1,4 @@
-import LineChartComponent from "./LineChart";
+import LineChartComponent from "./LineChartComponent";
 
 export default function ChartDash() {
   return (
