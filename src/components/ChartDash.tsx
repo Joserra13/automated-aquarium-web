@@ -1,7 +1,8 @@
 import LineChartComponent from "./LineChartComponent";
 
 async function fetchMongoData() {
-  const res = await fetch('http://localhost:3000/api/read-mongodb');
+  // const res = await fetch('http://localhost:3000/api/read-mongodb');
+  const res = await fetch('https://automated-aquarium-backend.vercel.app/api/read-mongodb');
   return res.json()
 }
 
