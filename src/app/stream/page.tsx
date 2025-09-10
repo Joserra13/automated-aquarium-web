@@ -1,7 +1,38 @@
+import DataDisplay from "@/components/DataDisplay";
+import { SWRConfig } from "swr";
 import RealTimeComponent from "@/components/realTime";
-import LiveSensors from "@/components/LiveSensors";
+import Link from "@/components/Link";
 
 export default async function Stream() {
+  const initialData = await fetch(
+    "https://automated-aquarium-backend.vercel.app/fishFeeder",
+    {
+      // const query = await fetch("http://localhost:3000/fishFeeder", {
+      headers: new Headers({
+        "api-key": `${process.env.BACKEND_API_KEY}`,
+      }),
+      cache: "no-store",
+    }
+  )
+    .then((res) => res.json())
+    .catch((error) => {
+      console.error("Error fetching initial data:", error);
+      return null;
+    });
+
+  const fallback = {
+    "https://automated-aquarium-backend.vercel.app/fishFeeder": initialData || {
+      schedule0Enabled: true,
+      feednow: false,
+      schedule2Enabled: false,
+      schedule2: "00:00",
+      schedule1Enabled: false,
+      schedule0: "00:00",
+      schedule1: "00:00",
+      count: 31,
+      waterTemperature: 0.62842,
+    },
+  };
 
   return (
     <div className="min-h-screen from-gray-900 via-gray-800 to-blue-900">
@@ -18,11 +49,51 @@ export default async function Stream() {
 
         <div className="max-w-7xl mx-auto">
           {/* Sensor Data Panel - Now on top */}
+          <div className="mb-8">
+            <div className="bg-gray-800 rounded-2xl shadow-xl p-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">📊</span>
+                </div>
+                <h3 className="text-xl font-bold ext-white">
+                  Live Sensors
+                </h3>
+              </div>
 
-          <LiveSensors />
+              <SWRConfig value={{ fallback }}>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                  <div className="p-4 bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl border border-blue-800">
+                    <DataDisplay
+                      sensor={{
+                        tag: "Water Temperature",
+                        key: "waterTemperature",
+                      }}
+                    />
+                  </div>
 
-          {/* <div className="grid lg:grid-cols-4 gap-8"> */}
-          <div className="gap-8">
+                  <div className="p-4 bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl border border-green-800">
+                    <DataDisplay sensor={{ tag: "Times Fed Today", key: "count" }} />
+                  </div>
+
+                  <div className="p-4 bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl border border-purple-800">
+                    <DataDisplay
+                      sensor={{
+                        tag: "Feed Status",
+                        key: "feednow",
+                      }}
+                    />
+                  </div>
+                  <Link href="/stream/dashboard" className="p-4 flex flex-col items-center justify-center bg-gradient-to-r from-cyan-900/20 to-blue-900/20 rounded-xl border border-cyan-800 hover:bg-cyan-500 cursor-pointer transition-colors">
+                      <span className="text-lg font-bold flex items-center justify-center h-full">
+                        See live data
+                      </span>
+                  </Link>
+                </div>
+              </SWRConfig>
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-4 gap-8">
             {/* Main Stream Section */}
             <div className="lg:col-span-3">
               <div className="relative group">
@@ -60,7 +131,7 @@ export default async function Stream() {
             </div>
 
             {/* Quick Actions - Now on the right side */}
-            {/* <div className="lg:col-span-1">
+            <div className="lg:col-span-1">
               <div className="bg-gray-800 rounded-2xl shadow-xl p-6">
                 <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
                   <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
@@ -81,7 +152,7 @@ export default async function Stream() {
                   </button>
                 </div>
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
