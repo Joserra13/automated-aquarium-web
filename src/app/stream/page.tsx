@@ -1,8 +1,39 @@
-import LiveSensorDataHeader from "@/components/LiveSensorDataHeader";
+import DataDisplay from "@/components/DataDisplay";
+import { SWRConfig } from "swr";
 import RealTimeComponent from "@/components/realTime";
+import Link from "@/components/Link";
+import AquariumCare from "@/components/AquariumCare";
 
 export default async function Stream() {
-  
+  const initialData = await fetch(
+    "https://automated-aquarium-backend.vercel.app/fishFeeder",
+    {
+      // const query = await fetch("http://localhost:3000/fishFeeder", {
+      headers: new Headers({
+        "api-key": `${process.env.BACKEND_API_KEY}`,
+      }),
+      cache: "no-store",
+    }
+  )
+    .then((res) => res.json())
+    .catch((error) => {
+      console.error("Error fetching initial data:", error);
+      return null;
+    });
+
+  const fallback = {
+    "https://automated-aquarium-backend.vercel.app/fishFeeder": initialData || {
+      schedule0Enabled: true,
+      feednow: false,
+      schedule2Enabled: false,
+      schedule2: "00:00",
+      schedule1Enabled: false,
+      schedule0: "00:00",
+      schedule1: "00:00",
+      count: 31,
+      waterTemperature: 0.62842,
+    },
+  };
 
   return (
     <div className="min-h-screen from-gray-900 via-gray-800 to-blue-900">
@@ -29,12 +60,41 @@ export default async function Stream() {
                   Live Sensors
                 </h3>
               </div>
-              <LiveSensorDataHeader />
+
+              <SWRConfig value={{ fallback }}>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                  <div className="p-4 bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl border border-blue-800">
+                    <DataDisplay
+                      sensor={{
+                        tag: "Water Temperature",
+                        key: "waterTemperature",
+                      }}
+                    />
+                  </div>
+
+                  <div className="p-4 bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl border border-green-800">
+                    <DataDisplay sensor={{ tag: "Times Fed Today", key: "count" }} />
+                  </div>
+
+                  <div className="p-4 bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl border border-purple-800">
+                    <DataDisplay
+                      sensor={{
+                        tag: "Feed Status",
+                        key: "feednow",
+                      }}
+                    />
+                  </div>
+                  <Link href="/stream/dashboard" className="p-4 flex flex-col items-center justify-center bg-gradient-to-r from-cyan-900/20 to-blue-900/20 rounded-xl border border-cyan-800 hover:bg-cyan-500 cursor-pointer transition-colors">
+                      <span className="text-lg font-bold flex items-center justify-center h-full">
+                        See live data
+                      </span>
+                  </Link>
+                </div>
+              </SWRConfig>
             </div>
           </div>
 
-          {/* <div className="grid lg:grid-cols-4 gap-8"> */}
-          <div className="gap-8">
+          <div className="grid lg:grid-cols-4 gap-8">
             {/* Main Stream Section */}
             <div className="lg:col-span-3">
               <div className="relative group">
@@ -71,29 +131,7 @@ export default async function Stream() {
               </div>
             </div>
 
-            {/* Quick Actions - Now on the right side */}
-            {/* <div className="lg:col-span-1">
-              <div className="bg-gray-800 rounded-2xl shadow-xl p-6">
-                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
-                    <span className="text-white text-sm font-bold">🎮</span>
-                  </div>
-                  Quick Actions
-                </h3>
-
-                <div className="space-y-3">
-                  <button className="w-full p-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                    🐠 Feed Fish Now
-                  </button>
-                  <button className="w-full p-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                    📅 Schedule Feeding
-                  </button>
-                  <button className="w-full p-4 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                    📊 View Analytics
-                  </button>
-                </div>
-              </div>
-            </div> */}
+            <AquariumCare/>
           </div>
         </div>
       </div>
