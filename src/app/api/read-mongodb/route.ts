@@ -1,5 +1,3 @@
-// app/api/water-temperature/route.js
-
 import { MongoClient } from 'mongodb';
 
 export async function GET() {
