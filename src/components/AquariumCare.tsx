@@ -36,7 +36,7 @@ export default async function AquariumCare() {
               {waterCareData ? waterCareData[1]['event-time'].toISOString().split('T')[0] : 'N/A'}
               </span>
             </div>
-            <div className="w-full p-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-xl flex flex-col">
+            <div className="w-full p-4 bg-gradient-to-r from-green-700 to-emerald-500 text-white rounded-xl flex flex-col">
               <span className="text-base mb-1 flex items-center gap-2 font-bold">
               <span role="img" aria-label="Fertilizer">🧴</span>
               Fertilizer
