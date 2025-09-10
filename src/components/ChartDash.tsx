@@ -19,18 +19,15 @@ export default async function ChartDash() {
       <div className="bg-gray-800 rounded-lg p-6 flex items-center justify-center">
         <LineChartComponent />
       </div>
-      <div className="bg-gray-800 rounded-lg p-6 flex items-center justify-center">
-        {/* Element 2 */}
+      {/* <div className="bg-gray-800 rounded-lg p-6 flex items-center justify-center">
         <LineChartComponent />
       </div>
       <div className="bg-gray-800 rounded-lg p-6 flex items-center justify-center">
-        {/* Element 3 */}
         <span className="text-white">Element 3</span>
       </div>
       <div className="bg-gray-800 rounded-lg p-6 flex items-center justify-center">
-        {/* Element 4 */}
         <span className="text-white">Element 4</span>
-      </div>
+      </div> */}
     </div>
   );
 }
