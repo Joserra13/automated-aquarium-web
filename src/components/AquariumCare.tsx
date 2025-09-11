@@ -2,8 +2,57 @@ import { getLatestWaterCare } from "@/lib/aquarium-care";
 
 export default async function AquariumCare() {
 
-  const waterCareData = await getLatestWaterCare();
+  let waterCareData = await getLatestWaterCare();
+  const today = new Date().toISOString().split('T')[0];
+  waterCareData = waterCareData?.sort((a, b) => a.id - b.id) ?? null;
   console.log("Latest Water Care Data:", waterCareData);
+
+  const oneDayMs = 24 * 60 * 60 * 1000; // 1 day in ms
+  const oneWeekMs = 7 * oneDayMs; // 1 week in ms
+  const threeWeeksMs = 3 * oneWeekMs // 3 weeks in ms
+  const threeDaysMs = 3 * oneDayMs;
+  const oneMonthMS = 4 * oneWeekMs; 
+  const twoMonthsMs = 2 * oneMonthMS; 
+
+  waterCareData?.forEach((event) => {
+    const eventTime = event['event-time'].toISOString().split('T')[0]
+    const diffMs = Math.abs(new Date(today).getTime() - new Date(eventTime).getTime());
+
+    switch (event['event-name']) {
+      case 'replace-water':
+        if (diffMs >= threeWeeksMs) {
+          event['status'] = true;
+        } else {
+          event['status'] = false;
+        }
+        break;
+      case 'stability':
+        if (diffMs >= oneWeekMs) {
+          event['status'] = true;
+        } else {
+          event['status'] = false;
+        }
+        break;
+      case 'fertilizer':
+        if (diffMs >= threeDaysMs) {
+          event['status'] = true;
+        } else {
+          event['status'] = false;
+        }
+        break;
+      case 'sponge':
+      case 'carbon':
+        if (diffMs >= twoMonthsMs) {
+          event['status'] = true;
+        } else {
+          event['status'] = false;
+        }
+        break;
+      default:
+        event['status'] = false;
+        break;
+    }
+  });
 
   return (
     <>
@@ -18,49 +67,59 @@ export default async function AquariumCare() {
           </h3>
 
           <div className="space-y-3">
-            <div className="w-full p-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl flex flex-col">
+            <div className="w-full p-4 bg-gradient-to-r from-blue-500 to-cyan-500  rounded-xl flex flex-col" title="Change water every 3 weeks">
               <span className="text-base mb-1 flex items-center gap-2 font-bold">
-              <span role="img" aria-label="Water Change">💧</span>
-              Water Change (3 weeks)
+                <span role="img" aria-label="Water Change">💧</span>
+                Water Change
               </span>
-              <span className="text-lg">
-              {waterCareData ? waterCareData[0]['event-time'].toISOString().split('T')[0] : 'N/A'}
+              <span
+                className={`text-lg ${waterCareData && waterCareData[0]['status'] ? 'text-red-700' : 'text-white'}`}
+              >
+                {waterCareData ? waterCareData[0]['event-time'].toISOString().split('T')[0] : 'N/A'}
               </span>
             </div>
-            <div className="w-full p-4 bg-gradient-to-r from-blue-700 to-cyan-700 text-white rounded-xl flex flex-col">
+            <div className="w-full p-4 bg-gradient-to-r from-blue-700 to-cyan-700 text-white rounded-xl flex flex-col" title="Add stability liquid weekly">
               <span className="text-base mb-1 flex items-center gap-2 font-bold">
-              <span role="img" aria-label="Stability">🧪</span>
-              Stability (1/week)
+                <span role="img" aria-label="Stability">🧪</span>
+                Stability
               </span>
-              <span className="text-lg">
-              {waterCareData ? waterCareData[1]['event-time'].toISOString().split('T')[0] : 'N/A'}
+              <span 
+                className={`text-lg ${waterCareData && waterCareData[1]['status'] ? 'text-red-700' : 'text-white'}`}
+              >
+                {waterCareData ? waterCareData[1]['event-time'].toISOString().split('T')[0] : 'N/A'}
               </span>
             </div>
-            <div className="w-full p-4 bg-gradient-to-r from-green-700 to-emerald-500 text-white rounded-xl flex flex-col">
+            <div className="w-full p-4 bg-gradient-to-r from-green-700 to-emerald-500 text-white rounded-xl flex flex-col" title="Add fertilizer twice a week">
               <span className="text-base mb-1 flex items-center gap-2 font-bold">
-              <span role="img" aria-label="Fertilizer">🧴</span>
-              Fertilizer (2/week)
+                <span role="img" aria-label="Fertilizer">🧴</span>
+                Fertilizer
               </span>
-              <span className="text-lg">
-              {waterCareData ? waterCareData[2]['event-time'].toISOString().split('T')[0] : 'N/A'}
+              <span 
+                className={`text-lg ${waterCareData && waterCareData[2]['status'] ? 'text-red-700' : 'text-white'}`}
+              >
+                {waterCareData ? waterCareData[2]['event-time'].toISOString().split('T')[0] : 'N/A'}
               </span>
             </div>
-            <div className="w-full p-4 bg-gradient-to-r from-green-700 to-yellow-200 text-white rounded-xl flex flex-col">
+            <div className="w-full p-4 bg-gradient-to-r from-yellow-300 to-green-700 text-white rounded-xl flex flex-col" title="Change sponge filter every 2 months">
               <span className="text-base mb-1 flex items-center gap-2 font-bold">
-              <span role="img" aria-label="Fertilizer">🧴</span>
-              Filter: Sponge (2/week)
+                <span role="img" aria-label="Fertilizer">🧴</span>
+                Filter: Sponge
               </span>
-              <span className="text-lg">
-              {waterCareData ? waterCareData[2]['event-time'].toISOString().split('T')[0] : 'N/A'}
+              <span 
+                className={`text-lg ${waterCareData && waterCareData[3]['status'] ? 'text-red-700' : 'text-white'}`}
+              >
+                {waterCareData ? waterCareData[3]['event-time'].toISOString().split('T')[0] : 'N/A'}
               </span>
             </div>
-            <div className="w-full p-4 bg-gradient-to-r from-black to-gray-400 text-white rounded-xl flex flex-col">
+            <div className="w-full p-4 bg-gradient-to-r from-black to-gray-400 text-white rounded-xl flex flex-col" title="Change carbon filter every 2 months">
               <span className="text-base mb-1 flex items-center gap-2 font-bold">
-              <span role="img" aria-label="Fertilizer">🧴</span>
-              Filter: Carbon (2 months)
+                <span role="img" aria-label="Fertilizer">🧴</span>
+                Filter: Carbon
               </span>
-              <span className="text-lg">
-              {waterCareData ? waterCareData[2]['event-time'].toISOString().split('T')[0] : 'N/A'}
+              <span 
+                className={`text-lg ${waterCareData && waterCareData[4]['status'] ? 'text-red-700' : 'text-white'}`}
+              >
+                {waterCareData ? waterCareData[4]['event-time'].toISOString().split('T')[0] : 'N/A'}
               </span>
             </div>
           </div>
