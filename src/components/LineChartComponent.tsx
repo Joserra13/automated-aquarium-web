@@ -34,7 +34,12 @@ const staticData = [
   },
 ];
 
-export default function LineChartComponent() {
+type Sensor = {
+  key: string;
+  tag: string;
+};
+
+export default function LineChartComponent({ sensor }: { sensor: Sensor; }) {
   const [data, setData] = useState(staticData);
   const [loading, setLoading] = useState(true);
 
@@ -47,9 +52,11 @@ export default function LineChartComponent() {
           
           // Transform MongoDB data to chart format
           const chartData = mongoData.map((entry: any) => ({
-            waterTemp: entry.waterTemperature,
+            waterTemp: entry[sensor.key],
             timestamp: entry.timestamp,
           }));
+
+          console.log("Fetched Chart Data:", chartData);
           
           setData(chartData);
         } else {
@@ -86,7 +93,7 @@ export default function LineChartComponent() {
       <YAxis stroke="#A5F3FC" />
       <Tooltip />
       <Legend />
-      <Line type="monotone" dataKey="waterTemp" stroke="#06b6d4" activeDot={{ r: 8 }} />
+      <Line type="monotone" dataKey={`${sensor.tag}`} stroke="#06b6d4" activeDot={{ r: 8 }} />
     </LineChart>
   );
 }
