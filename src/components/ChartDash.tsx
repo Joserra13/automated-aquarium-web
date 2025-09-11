@@ -17,12 +17,22 @@ export default async function ChartDash() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
       <div className="bg-gray-800 rounded-lg p-6 flex items-center justify-center">
-        <LineChartComponent />
-      </div>
-      {/* <div className="bg-gray-800 rounded-lg p-6 flex items-center justify-center">
-        <LineChartComponent />
+        <LineChartComponent
+          sensor={{
+            tag: "Water Temperature (ºC)",
+            key: "waterTemperature",
+          }}
+        />
       </div>
       <div className="bg-gray-800 rounded-lg p-6 flex items-center justify-center">
+        <LineChartComponent 
+          sensor={{
+            tag: "Water Level (L)",
+            key: "waterLevel",
+          }}
+        />
+      </div>
+      {/* <div className="bg-gray-800 rounded-lg p-6 flex items-center justify-center">
         <span className="text-white">Element 3</span>
       </div>
       <div className="bg-gray-800 rounded-lg p-6 flex items-center justify-center">
