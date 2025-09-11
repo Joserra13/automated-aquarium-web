@@ -21,7 +21,7 @@ export default async function AquariumCare() {
             <div className="w-full p-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl flex flex-col">
               <span className="text-base mb-1 flex items-center gap-2 font-bold">
               <span role="img" aria-label="Water Change">💧</span>
-              Water Change
+              Water Change (3 weeks)
               </span>
               <span className="text-lg">
               {waterCareData ? waterCareData[0]['event-time'].toISOString().split('T')[0] : 'N/A'}
@@ -30,7 +30,7 @@ export default async function AquariumCare() {
             <div className="w-full p-4 bg-gradient-to-r from-blue-700 to-cyan-700 text-white rounded-xl flex flex-col">
               <span className="text-base mb-1 flex items-center gap-2 font-bold">
               <span role="img" aria-label="Stability">🧪</span>
-              Stability
+              Stability (1/week)
               </span>
               <span className="text-lg">
               {waterCareData ? waterCareData[1]['event-time'].toISOString().split('T')[0] : 'N/A'}
@@ -39,7 +39,25 @@ export default async function AquariumCare() {
             <div className="w-full p-4 bg-gradient-to-r from-green-700 to-emerald-500 text-white rounded-xl flex flex-col">
               <span className="text-base mb-1 flex items-center gap-2 font-bold">
               <span role="img" aria-label="Fertilizer">🧴</span>
-              Fertilizer
+              Fertilizer (2/week)
+              </span>
+              <span className="text-lg">
+              {waterCareData ? waterCareData[2]['event-time'].toISOString().split('T')[0] : 'N/A'}
+              </span>
+            </div>
+            <div className="w-full p-4 bg-gradient-to-r from-green-700 to-yellow-200 text-white rounded-xl flex flex-col">
+              <span className="text-base mb-1 flex items-center gap-2 font-bold">
+              <span role="img" aria-label="Fertilizer">🧴</span>
+              Filter: Sponge (2/week)
+              </span>
+              <span className="text-lg">
+              {waterCareData ? waterCareData[2]['event-time'].toISOString().split('T')[0] : 'N/A'}
+              </span>
+            </div>
+            <div className="w-full p-4 bg-gradient-to-r from-black to-gray-400 text-white rounded-xl flex flex-col">
+              <span className="text-base mb-1 flex items-center gap-2 font-bold">
+              <span role="img" aria-label="Fertilizer">🧴</span>
+              Filter: Carbon (2 months)
               </span>
               <span className="text-lg">
               {waterCareData ? waterCareData[2]['event-time'].toISOString().split('T')[0] : 'N/A'}
