@@ -11,8 +11,8 @@ export default async function AquariumCare() {
   const oneWeekMs = 7 * oneDayMs; // 1 week in ms
   const threeWeeksMs = 3 * oneWeekMs // 3 weeks in ms
   const threeDaysMs = 3 * oneDayMs;
-  const oneMonthMS = 4 * oneWeekMs; 
-  const twoMonthsMs = 2 * oneMonthMS; 
+  const oneMonthMS = 4 * oneWeekMs;
+  const twoMonthsMs = 2 * oneMonthMS;
 
   waterCareData?.forEach((event) => {
     const eventTime = event['event-time'].toISOString().split('T')[0]
@@ -77,50 +77,55 @@ export default async function AquariumCare() {
               >
                 {waterCareData ? waterCareData[0]['event-time'].toISOString().split('T')[0] : 'N/A'}
               </span>
+              <span className="text-xs text-gray-300 mt-1">Next change on {waterCareData ? new Date(waterCareData[0]['event-time'].getTime() + threeWeeksMs).toISOString().split('T')[0] : 'N/A'}</span>
             </div>
             <div className="w-full p-4 bg-gradient-to-r from-blue-700 to-cyan-700 text-white rounded-xl flex flex-col" title="Add stability liquid weekly">
               <span className="text-base mb-1 flex items-center gap-2 font-bold">
                 <span role="img" aria-label="Stability">🧪</span>
                 Stability
               </span>
-              <span 
+              <span
                 className={`text-lg ${waterCareData && waterCareData[1]['status'] ? 'text-red-700' : 'text-white'}`}
               >
                 {waterCareData ? waterCareData[1]['event-time'].toISOString().split('T')[0] : 'N/A'}
               </span>
+              <span className="text-xs text-gray-300 mt-1">Next change on {waterCareData ? new Date(waterCareData[1]['event-time'].getTime() + oneWeekMs).toISOString().split('T')[0] : 'N/A'}</span>
             </div>
             <div className="w-full p-4 bg-gradient-to-r from-green-700 to-emerald-500 text-white rounded-xl flex flex-col" title="Add fertilizer twice a week">
               <span className="text-base mb-1 flex items-center gap-2 font-bold">
                 <span role="img" aria-label="Fertilizer">🧴</span>
                 Fertilizer
               </span>
-              <span 
+              <span
                 className={`text-lg ${waterCareData && waterCareData[2]['status'] ? 'text-red-700' : 'text-white'}`}
               >
                 {waterCareData ? waterCareData[2]['event-time'].toISOString().split('T')[0] : 'N/A'}
               </span>
+              <span className="text-xs text-gray-300 mt-1">Next change on {waterCareData ? new Date(waterCareData[2]['event-time'].getTime() + threeDaysMs).toISOString().split('T')[0] : 'N/A'}</span>
             </div>
             <div className="w-full p-4 bg-gradient-to-r from-yellow-300 to-green-700 text-white rounded-xl flex flex-col" title="Change sponge filter every 2 months">
               <span className="text-base mb-1 flex items-center gap-2 font-bold">
                 <span role="img" aria-label="Fertilizer">🧴</span>
                 Filter: Sponge
               </span>
-              <span 
+              <span
                 className={`text-lg ${waterCareData && waterCareData[3]['status'] ? 'text-red-700' : 'text-white'}`}
               >
                 {waterCareData ? waterCareData[3]['event-time'].toISOString().split('T')[0] : 'N/A'}
               </span>
+              <span className="text-xs text-gray-300 mt-1">Next change on {waterCareData ? new Date(waterCareData[3]['event-time'].getTime() + twoMonthsMs).toISOString().split('T')[0] : 'N/A'}</span>
             </div>
             <div className="w-full p-4 bg-gradient-to-r from-black to-gray-400 text-white rounded-xl flex flex-col" title="Change carbon filter every 2 months">
               <span className="text-base mb-1 flex items-center gap-2 font-bold">
                 <span role="img" aria-label="Fertilizer">🧴</span>
                 Filter: Carbon
               </span>
-              <span 
+              <span
                 className={`text-lg ${waterCareData && waterCareData[4]['status'] ? 'text-red-700' : 'text-white'}`}
               >
                 {waterCareData ? waterCareData[4]['event-time'].toISOString().split('T')[0] : 'N/A'}
               </span>
+              <span className="text-xs text-gray-300 mt-1">Next change on {waterCareData ? new Date(waterCareData[4]['event-time'].getTime() + twoMonthsMs).toISOString().split('T')[0] : 'N/A'}</span>
             </div>
           </div>
         </div>
