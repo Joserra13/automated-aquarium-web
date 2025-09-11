@@ -34,7 +34,7 @@ export default function DataDisplay({ sensor, onDataUpdateAction }: { sensor: Se
   return (
     <div className="flex flex-col items-center">
       <span className="text-lg font-bold">
-        {sensor.key === "waterTemperature"
+        {sensor.key === "waterTemperature" || sensor.key === "waterLevel"
           ? data && data[sensor.key] !== undefined
             ? data[sensor.key].toFixed(2)
             : "N/A"

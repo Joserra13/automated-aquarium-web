@@ -73,7 +73,7 @@ export default async function Stream() {
                   </div>
                   <div className="aspect-video bg-gray-700 relative overflow-hidden">
                     <img
-                      src="/blog/the-automated-aquarium/IntroductionPicture.avif"
+                      src="blog/aquarium-equipment/Aquarium-decoration.avif"
                       alt="Aquarium Live Stream"
                       className="object-cover w-full h-full transition-transform duration-500"
                     />

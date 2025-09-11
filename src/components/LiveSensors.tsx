@@ -25,6 +25,7 @@ export default function LiveSensors() {
       schedule1: "00:00",
       count: 0,
       waterTemperature: 0.00,
+      waterLevel: 0
     },
   };
 
@@ -46,7 +47,7 @@ export default function LiveSensors() {
             <div className="p-4 bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl border border-blue-800">
               <DataDisplay
                 sensor={{
-                  tag: "Water Temperature",
+                  tag: "Water Temperature (ºC)",
                   key: "waterTemperature",
                 }}
                 onDataUpdateAction={handleDataUpdate}
@@ -63,8 +64,8 @@ export default function LiveSensors() {
             <div className="p-4 bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl border border-purple-800">
               <DataDisplay
                 sensor={{
-                  tag: "Feed Status",
-                  key: "feednow",
+                  tag: "Water Level (L)",
+                  key: "waterLevel",
                 }}
                 onDataUpdateAction={handleDataUpdate}
               />
