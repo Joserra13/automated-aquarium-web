@@ -11,7 +11,7 @@ export default function Home() {
           backgroundImage: "url('/blog/aquarium-equipment/Aquarium-decoration.avif')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: "55vh",
+          height: "49vh",
         }}
       >
         <div
