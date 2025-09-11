@@ -92,7 +92,7 @@ export default function LineChartComponent({ sensor }: { sensor: Sensor; }) {
       <YAxis stroke="#A5F3FC" />
       <Tooltip />
       <Legend />
-      <Line type="monotone" dataKey={`${sensor.key}`} stroke="#06b6d4" activeDot={{ r: 8 }} label={`${sensor.tag}`}/>
+      <Line type="monotone" dataKey={`${sensor.key}`} stroke="#06b6d4" activeDot={{ r: 8 }} name={`${sensor.tag}`}/>
     </LineChart>
   );
 }
