@@ -1,8 +1,9 @@
 {
-  "guide": 2,
+  "guide": 3,
   "components": 1,
   "markdown": 2,
   "github": 1,
   "code": 1,
-  "features": 1
+  "features": 1,
+  "feature": 1
 }
