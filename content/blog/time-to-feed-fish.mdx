@@ -1,0 +1,38 @@
+---
+title: Time to feed the fish
+date: "2025-08-15"
+tags: ["feature", "guide"]
+draft: false
+summary: Just like us, our fish require regular feeding. With the introduction of a new gadget, their feeding schedule can now be automated. Isn't it cool?
+---
+
+## 🐟 Latest feature: The Fish Feeder
+
+If you’ve ever owned an aquarium, you know how easy it is to forget a feeding, especially during a busy week or while you’re away. Consistent feeding is crucial for the health and happiness of your aquatic friends, but life doesn’t always make it easy. That’s why I built an **automatic fish feeder** for my aquarium.
+
+![FishFeeder in dev](time-to-feed/feeder.avif)
+
+## 🤖 What is the automatic fish feeder?
+
+The automatic fish feeder is a small, smart device that dispenses food for your fish at scheduled times or on demand. You simply fill the storage compartment with food, set your preferred feeding schedule, and let the feeder take care of the rest. No more worrying about missed meals or overfeeding—your fish get just the right amount, right on time.
+
+This tool is especially helpful if you travel, have a busy routine, or just want peace of mind knowing your fish are always cared for. It’s a simple addition that makes aquarium keeping much less stressful and a lot more enjoyable.
+
+## ✨ How does it work?
+
+The fish feeder also comes with an underwater temperature sensor and water-level meter to track the current underwater temperature as well as the water level, helping to detect a possible water leak in advance. In the backend, the Raspberry Pi Pico is connected to a [Google Firebase Firestore Database](https://github.com/Joserra13/automated-aquarium/blob/main/docs/firebase.md) via HTTP requests and updates the values every 5 seconds. Then, those values are fetched from the frontend and displayed on the [stream](https://automated-aquarium.com/stream) page.
+
+## 📝 Want to build your own?
+
+If you’re interested in making your own automatic fish feeder, you’ll find all the technical details, parts lists, and setup instructions in the project’s [README](https://github.com/Joserra13/automated-aquarium/tree/main/src/RaspberryPi-Pico-W) and related documentation. The build is straightforward and customizable, so you can adapt it to your aquarium’s needs.
+
+> If you have questions, want to share your own build, or just want to chat about aquarium automation, feel free to [reach out](https://automated-aquarium.com/contact)!
+
+With a little bit of tech, you can make sure your fish never miss a meal, no matter how busy life gets.
+
+![FishFeederGIF](time-to-feed/FishFeederGIF.gif)
+
+Happy feeding!
+
+Joserra
+
