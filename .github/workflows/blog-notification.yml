@@ -28,7 +28,7 @@ jobs:
       # Optional debug step
       - name: Debug metadata
         run: |
-          echo "Metadata output: ${{ steps.metadata.outputs.metadata }}"
+          echo "Metadata output: ${{ toJSON(steps.metadata.outputs.metadata) }}"
 
   send-notifications:
     needs: extract-metadata
