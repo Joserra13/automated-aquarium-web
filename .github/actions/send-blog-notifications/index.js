@@ -13,7 +13,7 @@ async function main() {
       process.env.INPUT_SITE_URL || "https://automated-aquarium.com";
     const fromEmail =
       process.env.INPUT_FROM_EMAIL ||
-      "newsletter-no-reply@automated-aquarium.com";
+      "newsletter@automated-aquarium.com";
 
     if (!blogMetadataStr) {
       throw new Error("Missing required input: blog_metadata");
